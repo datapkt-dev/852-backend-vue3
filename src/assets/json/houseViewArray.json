@@ -1,0 +1,22 @@
+[
+    {
+        "type": "sea",
+        "name": "海景"
+    },
+    {
+        "type": "mountain",
+        "name": "山景"
+    },
+    {
+        "type": "garden",
+        "name": "園景"
+    },
+    {
+        "type": "opening",
+        "name": "開景"
+    },
+    {
+        "type": "city",
+        "name": "城市景"
+    }
+]

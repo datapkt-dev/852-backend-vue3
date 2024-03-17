@@ -1,0 +1,14 @@
+[
+    {
+        "type": "owner",
+        "name": "業主"
+    },
+    {
+        "type": "agent",
+        "name": "代理人"
+    },
+    {
+        "type": "Overseas agent",
+        "name": "海外代理人"
+    }
+]

@@ -6,6 +6,10 @@ import Login from '@/pages/login/login.vue'
 import Page404 from '@/pages/error/page404.vue'
 
 import Home from '@/pages/home/home.vue'
+import HouseAddandEdit from '@/pages/home/houseAddandEdit.vue'
+import PublicationPlan from '@/pages/home/publicationPlan.vue'
+import PayTheFee from '@/pages/home/payTheFee.vue'
+import PublicationSuccess from '@/pages/home/publicationSuccess.vue'
 
 import TenantList from '@/pages/tenant/tenant-list.vue'
 import MessageList from '@/pages/message/message-list.vue'
@@ -33,6 +37,51 @@ const routes = [
       title: '主頁'
     } 
   },
+  {
+    path: '/home/:pageType',
+    name: 'HouseAdd',
+    component: HouseAddandEdit,
+    meta: { 
+      title: '新增房屋資訊'
+    }
+  },
+  {
+    path: '/home/:pageType/publication-plan',
+    name: 'PublicationPlan',
+    component: PublicationPlan,
+    meta: { 
+      title: '刊登方案 '
+    }
+  },
+  {
+    path: '/home/:pageType/pay-the-fee',
+    name: 'PayTheFee',
+    component: PayTheFee,
+    meta: { 
+      title: '繳費'
+    }
+  },
+  {
+    path: '/home/:pageType/success',
+    name: 'PublicationSuccess',
+    component: PublicationSuccess,
+    meta: { 
+      title: '刊登成功'
+    }
+  },
+
+  
+
+
+
+  // {
+  //   path: '/home/:pageType/:houseId',
+  //   name: 'HouseEdit',
+  //   component: HouseAddandEdit,
+  //   meta: { 
+  //     title: '編輯房屋資訊'
+  //   }
+  // },
 
   {
     path: '/tenant-list',

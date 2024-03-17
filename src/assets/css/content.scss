@@ -482,6 +482,202 @@ hr{
     }
 }
 
+.form-div{
+    >div{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 15px 0;
+        >label{
+            width: 120px;
+            font-size: 14px;
+            font-weight: 700;
+            text-align: right;
+            color: var(--bs-gray);
+            margin-right: 30px;
+        }
+        >div{
+            width: calc(100% - 150px);
+            font-size: 14px;
+        }
+    }
+}
+
+.radio-group{
+    display: flex-wrap;
+    justify-content: start;
+    align-items: center;
+}
+
+.input-group{
+    position: relative;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    >*{
+        margin: 0 5px;
+    }
+}
+
+.text-input{
+    position: relative;
+    input[type="text"]{
+        width: auto;
+        min-width: 300px;
+        max-width: 100%;
+    }
+    input[type=number]{
+        width: 100px;
+    }
+    &.word-0-1{
+        input{
+            padding-right: 30px;
+        }
+        >span{
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translate(0, -50%);
+            color: var(--bs-gray);
+        }
+    }
+    &.word-1-1{
+        input{
+            padding-right: 70px;
+            padding-left: 70px;
+            width: 220px;
+            text-align: center;
+        }
+        >span{
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translate(0, -50%);
+            color: var(--bs-dark);
+            &:nth-child(2){
+                right: 10px;
+                left: auto;
+                color: var(--bs-gray);
+            }
+        }
+    }
+    
+}
+
+
+.checkbox-label{
+    display: inline-block;
+    margin: 5px 15px 5px 0;
+    min-width: 120px;
+    >input{
+        display: none;
+    }
+    >span{
+        vertical-align: middle;
+        position: relative;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 1px solid var(--bs-gray-400);
+        margin-right: 5px;
+        cursor: pointer;
+    }
+    >label{
+        vertical-align: middle;
+    }
+    >input:checked+span{
+        background: var(--bs-primary);
+        border-color: var(--bs-primary);
+        //打勾
+        &::before{
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80%;
+            height: 3px;
+            transform: translate(-35%, -50%) rotate(-45deg);
+            background: var(--bs-white);
+        }
+        &::after{
+            content: "";
+            position: absolute;
+            top: 55%;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            transform: rotate(45deg);
+            background: var(--bs-white);
+        }
+    }
+
+}
+
+.radio-label{
+    display: inline-block;
+    margin: 5px 15px 5px 0;
+    min-width: 120px;
+    >input{
+        display: none;
+    }
+    >span{
+        vertical-align: middle;
+        position: relative;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 1px solid var(--bs-gray-400);
+        margin-right: 5px;
+        cursor: pointer;
+    }
+    >label{
+        vertical-align: middle;
+    }
+    >input:checked+span{
+        background: var(--bs-primary);
+        border-color: var(--bs-primary);
+        //打勾
+        &::before{
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80%;
+            height: 3px;
+            transform: translate(-35%, -50%) rotate(-45deg);
+            background: var(--bs-white);
+        }
+        &::after{
+            content: "";
+            position: absolute;
+            top: 55%;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            transform: rotate(45deg);
+            background: var(--bs-white);
+        }
+    }
+}
+
+.flex-space{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-group-inline{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    >input[type="number"]{
+        width: 100px;
+        text-align: center;
+    }
+}
+
+
 @media (max-width: 1400px) {
     .card-list{
         >.card{
@@ -509,6 +705,7 @@ hr{
             width: calc((100% - 0px));
         }
     }
+    
 
 
 }
@@ -529,6 +726,43 @@ hr{
             }
         }
     }
+
+    .form-div{
+        >div{
+            display: block;
+            >label{
+                width: 100%;
+                text-align: left;
+                margin: 10px 0;
+            }
+            >div{
+                width: 100%;
+                padding: 0 10px;
+                
+            }
+        }
+    }
+
+    .radio-group{
+        margin-bottom: 15px;
+    }
+    .input-group{
+        display: block;
+        input{
+            width: 100% !important;
+        }
+        select{
+            width: 100% !important;
+        }
+        input[type="number"]{
+            width: 100% !important;
+        }
+        >*{
+            margin: 5px 0;
+        }
+    }
+
+    
 }
 @media (max-width: 600px) {
     .content-page{

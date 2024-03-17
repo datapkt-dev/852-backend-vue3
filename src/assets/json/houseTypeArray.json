@@ -1,0 +1,70 @@
+[
+    {
+        "type": "Residential",
+        "name": "住宅",
+        "children": [
+            {
+                "type": "Estate",
+                "name": "屋苑"
+            },
+            {
+                "type": "SingleBuilding",
+                "name": "單棟式大廈"
+            },
+            {
+                "type": "VillageHouse",
+                "name": "村屋"
+            },
+            {
+                "type": "Tonglou",
+                "name": "唐樓"
+            },
+            {
+                "type": "PublicHousing",
+                "name": "居屋/公屋"
+            },
+            {
+                "type": "Apartment",
+                "name": "公寓"
+            }
+        ]
+    },
+    {
+        "type": "Office",
+        "name": "寫字樓"
+    },
+    {
+        "type": "Factory",
+        "name": "工廠大廈"
+    },
+    {
+        "type": "Shop",
+        "name": "商鋪",
+        "children": [
+            {
+                "type": "GroundFloor",
+                "name": "地鋪"
+            },
+            {
+                "type": "UpstairsShop",
+                "name": "樓上鋪"
+            },
+            {
+                "type": "StreetShop",
+                "name": "街鋪"
+            },
+            {
+                "type": "Mall",
+                "name": "商場"
+            }
+        ]
+    },
+    {
+        "type": "ParkingSpace",
+        "name": "車位"
+    },
+    {
+        "type": "Land",
+        "name": "土地"
+    }
+]

@@ -1,0 +1,22 @@
+[
+    {
+        "type": "rates",
+        "name": "差餉"
+    },
+    {
+        "type": "land_rent",
+        "name": "地租/地稅"
+    },
+    {
+        "type": "management_fee",
+        "name": "管理費"
+    },
+    {
+        "type": "water_bill",
+        "name": "水費"
+    },
+    {
+        "type": "electricity_bill",
+        "name": "電費"
+    }
+]

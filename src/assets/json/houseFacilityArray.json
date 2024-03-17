@@ -1,0 +1,22 @@
+[
+    {
+        "type": "convenienceStore",
+        "name": "便利店"
+    },
+    {
+        "type": "supermarket",
+        "name": "超級市場"
+    },
+    {
+        "type": "sportsVenue",
+        "name": "運動場所"
+    },
+    {
+        "type": "swimmingPool",
+        "name": "游泳池"
+    },
+    {
+        "type": "childrensPlayground",
+        "name": "兒童遊樂場"
+    }
+]

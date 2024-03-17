@@ -1,0 +1,42 @@
+[
+    {
+        "type": "television",
+        "name": "電視"
+    },
+    {
+        "type": "air conditioner",
+        "name": "冷氣"
+    },
+    {
+        "type": "washing machine",
+        "name": "洗衣機"
+    },
+    {
+        "type": "boiler",
+        "name": "熱水爐"
+    },
+    {
+        "type": "Micro-wave oven",
+        "name": "微波爐"
+    },
+    {
+        "type": "Refrigerator",
+        "name": "雪櫃"
+    },
+    {
+        "type": "bed",
+        "name": "床"
+    },
+    {
+        "type": "Wardrobe",
+        "name": "衣櫃"
+    },
+    {
+        "type": "dining table",
+        "name": "餐桌"
+    },
+    {
+        "type": "Sofa",
+        "name": "梳化"
+    }
+]

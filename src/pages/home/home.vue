@@ -18,6 +18,10 @@ const imgUserUrl = (url) => {
   }
 }
 
+const tabIndex = ref(1);
+
+
+
 </script>
 
 <template>
@@ -99,8 +103,8 @@ const imgUserUrl = (url) => {
     <div class="house-div">
         <div class="house-tab-div">
             <div>
-                <div class="tab">刊登中的樓盤</div>
-                <div class="tab active">關閉中的樓盤</div>
+                <div class="tab" :class="tabIndex==0?'active':''" @click="tabIndex = 0">刊登中的樓盤</div>
+                <div class="tab" :class="tabIndex==1?'active':''" @click="tabIndex = 1">關閉中的樓盤</div>
             </div>
             <div>
                 <button class="btn btn-info">租盤</button>
@@ -110,14 +114,14 @@ const imgUserUrl = (url) => {
         <div class="filter-list-div">
             <div class="filter-div">
                 <div>
-                    <label for="checkbox">
+                    <label for="checkbox" v-if="tabIndex==1">
                         <input type="checkbox" name="" id="checkbox">
                         全選
                     </label>
-                    <button class="btn btn-outline-info">批量刪除</button>
+                    <button class="btn btn-outline-info" v-if="tabIndex==1">批量刪除</button>
                 </div>
                 <div>
-                    <select name="" id="">
+                    <select name="" id="" v-if="tabIndex==1">
                         <option value="">選擇狀態</option>
                     </select>
                     <select name="" id="">
@@ -171,6 +175,10 @@ const imgUserUrl = (url) => {
             </div>
 
         </div>
+    </div>
+    <div v-if="tabIndex==0" class="mt-15 text-center">
+        <button class="btn btn-primary mx-1" @click="router.push('/home/add-rent')">刊登租盤廣告</button>
+        <button class="btn btn-primary mx-1" @click="router.push('/home/add-sale')">刊登售盤廣告</button>
     </div>
   </div>
 </template>
