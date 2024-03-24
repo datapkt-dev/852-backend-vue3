@@ -112,6 +112,15 @@ const routes = [
     } 
   },
 
+  {
+    path: '/profile',
+    name: 'profile',
+    component: () => import('@/pages/profile/profile.vue'),
+    meta: { 
+      title: '個人資料'
+    }
+  },
+
 
 
   // other pages 404

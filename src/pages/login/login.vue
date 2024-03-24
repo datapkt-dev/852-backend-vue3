@@ -9,7 +9,7 @@ const router = useRouter();
 const type = ref(0);
 
 const loginHandler = () => {
-  router.push('/');
+  router.push('/profile');
 }
 
 const loginByToken = () => {

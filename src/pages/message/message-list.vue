@@ -23,6 +23,10 @@ const imgUserUrl = (url) => {
   }
 }
 
+
+
+const isMessagesWindowOpen = ref(false);
+
 const tableHeaders = ref([
     { text: "#", value: "id" , width: 30 },
     { text: "Option", value: "options" , width: 60 },
@@ -132,7 +136,11 @@ watch(serverOptions, (value) => {
                     alternating
                 >
                     <template #item-options="row" >
-                        <button class="btn btn-sm btn-outline-primary" v-if="row.options.includes('view')">
+                        <button 
+                            class="btn btn-sm btn-outline-primary" 
+                            v-if="row.options.includes('view')"
+                            @click="isMessagesWindowOpen = true"
+                        >
                             <span class="material-icons-outlined">
                             visibility
                             </span>
@@ -144,6 +152,36 @@ watch(serverOptions, (value) => {
                 </EasyDataTable>
             </div>
         </div>
+    </div>
+  </div>
+  
+  <div
+    class="window-box-cover"
+    :class="isMessagesWindowOpen ? 'active' : ''"
+  >
+    <div class="window-box">
+      <div class="window-box-close" @click="isMessagesWindowOpen = false">
+        <span class="material-icons-outlined"> close </span>
+      </div>
+      <div class="window-box-title">回復訊息</div>
+      <div class="window-box-content">
+        <div class="form-div">
+          <!-- <div>
+            <label for=""><small class="text-danger">*</small> 姓名</label>
+            <div>
+              <div class="input-group">
+                <input type="text" placeholder="" />
+              </div>
+            </div>
+          </div> -->
+
+        </div>
+      </div>
+
+      <!-- <div class="window-box-btns">
+        <button class="btn btn-primary">確定</button>
+        <button class="btn btn-outline-primary">取消</button>
+      </div> -->
     </div>
   </div>
 </template>

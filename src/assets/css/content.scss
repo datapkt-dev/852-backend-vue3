@@ -677,6 +677,57 @@ hr{
     }
 }
 
+.window-box-cover{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 100;
+    display: none;
+    &.active{
+        display: block;
+    }
+    >.window-box{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: var(--bs-white);
+        border-radius: 5px;
+        padding: 10px;
+        width: 800px;
+        max-width: calc(100% - 20px);
+        >.window-box-close{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        >.window-box-title{
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--bs-dark);
+            margin-bottom: 10px;
+        }
+        >.window-box-content{
+            font-size: 16px;
+            color: var(--bs-gray);
+            margin-bottom: 10px;
+        }
+        >.window-box-btns{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            >button{
+                margin: 0 10px;
+            }
+        }
+    }
+}
+
 
 @media (max-width: 1400px) {
     .card-list{
