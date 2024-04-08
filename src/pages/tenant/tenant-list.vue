@@ -146,7 +146,7 @@ const tableItems = ref([
     startDate: "2021-01-01",
     endDate: "2021-12-31",
     photo: imgUserUrl("01.webp"),
-    email: "xxx@xxx.xxx"
+    email: ""
   },
 ]);
 const serverItemsLength = ref(30);
@@ -190,6 +190,17 @@ watch(
 const editTenant = (row) => {
   isAddEditTenantWindowOpen.value = true;
   addEditTenantWindowType.value = "edit";
+};
+
+const isSendEmailWindowOpen = ref(false);
+const sendEmailInfo = ref({
+  email: "",
+
+});
+
+const openSendEmail = (row) => {
+  isSendEmailWindowOpen.value = true;
+  sendEmailInfo.value.email = row.email;
 };
 
 
@@ -366,6 +377,10 @@ const editTenant = (row) => {
                 查看
               </button>
             </template>
+            <template #item-email="row">
+              <button v-if="row.email" class="btn btn-outline-primary" @click="openSendEmail(row)">發送信件</button>
+              <span v-else> - </span>
+            </template>
           </EasyDataTable>
         </div>
       </div>
@@ -489,6 +504,48 @@ const editTenant = (row) => {
         <button class="btn btn-primary">確定</button>
         <button class="btn btn-outline-primary">取消</button>
       </div> -->
+    </div>
+  </div>
+  <div
+    class="window-box-cover"
+    :class="isSendEmailWindowOpen ? 'active' : ''"
+  >
+    <div class="window-box">
+      <div class="window-box-close" @click="isSendEmailWindowOpen = false">
+        <span class="material-icons-outlined"> close </span>
+      </div>
+      <div class="window-box-title">發送信件</div>
+      <div class="window-box-content">
+        <div class="form-div">
+          <div>
+            <label for=""> Email</label>
+            <div>
+              {{ sendEmailInfo.email }}
+            </div>
+          </div>
+          <div>
+            <label for=""> 主旨</label>
+            <div>
+              <div class="input-group">
+                <input type="text" placeholder="請輸入主旨" />
+              </div>
+            </div>
+          </div>
+          <div>
+            <label for=""> 內容</label>
+            <div>
+              <div class="input-group">
+                <textarea placeholder="請輸入內容" rows="5"></textarea>
+              </div>
+            </div>
+          </div>
+          <div style="justify-content: flex-end;">
+            <button class="btn btn-primary ">
+              發送
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
