@@ -56,13 +56,13 @@ const menuList = ref([
     path: '/tenant-list',
     isActive: false
   },
-  {
-    type: 'link',
-    name: t('Menu.message-list'),
-    icon: 'chat',
-    path: '/message-list',
-    isActive: false
-  },
+  // {
+  //   type: 'link',
+  //   name: t('Menu.message-list'),
+  //   icon: 'chat',
+  //   path: '/message-list',
+  //   isActive: false
+  // },
   {
     type: 'line'
   },

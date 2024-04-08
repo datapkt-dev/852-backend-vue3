@@ -375,6 +375,48 @@ watch(houseTypeIndex, (val) => {
 
         </div>
     </div>
+    <div class="box">
+        <div class="box-top">
+            房屋問答
+        </div>
+        <div class="form-div">
+            
+
+            
+            <div class="qa-item">
+                <img src="@/assets/images/user/01.webp" alt="">
+                <div>
+                    <div>
+                        <span>No.123456</span>
+                        <span>2024-01-01</span>
+                    </div>
+                    <div>
+                        電費怎麼算?
+                        <button class="btn btn-sm">
+                            <span class="material-icons-outlined">
+                                delete
+                            </span>
+                        </button>
+                    </div>
+                    <div>
+                        <span>回覆：</span>
+                        <span>
+
+                        </span>
+                    </div>
+                    <div>
+                        <textarea name="" id="" rows="10" maxlength="500"></textarea>
+                    </div>
+                    <div>
+                        0/500
+                        <button class="btn btn-primary">提交回覆</button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
     <div class="box text-right">
         <button class="btn btn-primary" @click="router.push('/home/add-rent/publication-plan')">下一步</button>
     </div>
@@ -408,6 +450,70 @@ watch(houseTypeIndex, (val) => {
     }
 
 
+    .qa-item{
+        display: flex;
+        margin-bottom: 20px;
+        align-items: self-start;
+        >img{
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 20px;
+            background: var(--bs-gray-400);
+        }
+        >div{
+            flex: 1;
+            >div{
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 10px;
+            }
+            >div:nth-child(1){
+                display: flex;
+                justify-content: start;
+                margin-bottom: 10px;
+                >span{
+                    font-size: 14px;
+                    color: #999;
+                    &:first-child{
+                        margin-right: 10px;
+                        color: var(--bs-primary);
+                    }
+                }
+            }
+            >div:nth-child(2){
+                font-size: 20px;
+                font-weight: bold;
+                margin-bottom: 10px;
+                >button{
+                    margin-left: 10px;
+                }
+            }
+            >div:nth-child(3){
+                background: #F6F6F6;
+                justify-self: start;
+                font-size: 16px;
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+            >div:nth-child(4){
+                margin-bottom: 10px;
+                >textarea{
+                    width: 100%;
+                    padding: 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                }
+            }
+            >div:nth-child(5){
+                display: flex;
+                justify-content: space-between;
+                >button{
+                    padding: 5px 20px;
+                }
+            }
+        }
+    }
 
 
     @media (max-width: 1200px) {

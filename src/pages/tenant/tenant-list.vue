@@ -112,10 +112,11 @@ const tableHeaders = ref([
   { text: "#", value: "id", width: 30 },
   { text: "", value: "photo", width: 60 },
   { text: "房客", value: "name", width: 200 },
-  { text: "綁定平台", value: "platform", width: 120 },
+  // { text: "綁定平台", value: "platform", width: 120 },
   { text: "承租物件", value: "lease" },
   { text: "電話", value: "phone" },
-  { text: "物件承租金額", value: "rent" },
+  // { text: "物件承租金額", value: "rent" },
+  { text: "信箱", value: "email" },
   { text: "", value: "options", width: 60 },
 ]);
 const tableItems = ref([
@@ -131,6 +132,7 @@ const tableItems = ref([
     startDate: "2021-01-01",
     endDate: "2021-12-31",
     photo: imgUserUrl("01.webp"),
+    email: "zzz@zzz.zz"
   },
   {
     id: 2,
@@ -144,6 +146,7 @@ const tableItems = ref([
     startDate: "2021-01-01",
     endDate: "2021-12-31",
     photo: imgUserUrl("01.webp"),
+    email: "xxx@xxx.xxx"
   },
 ]);
 const serverItemsLength = ref(30);
@@ -279,7 +282,7 @@ const editTenant = (row) => {
                 </option>
               </select>
             </div>
-            <div>
+            <!-- <div>
               <label>租金</label>
               <div class="flex">
                 <input
@@ -297,7 +300,7 @@ const editTenant = (row) => {
                   v-model="rentEnd"
                 />
               </div>
-            </div>
+            </div> -->
             <hr />
           </div>
         </div>
