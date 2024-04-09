@@ -51,10 +51,10 @@ const callback = (response) => {
           <div class="subTitle">Sign in to continue!</div>
 
           
-          test 登入取token 只能https
+          <!-- test 登入取token 只能https
           <button class="btn btn-warning btn-block py-1" @click="loginByToken">Login Using Google</button>
           <br>
-          test 登入取一般資料 <br>
+          test 登入取一般資料 <br> -->
           <GoogleLogin :callback="callback" prompt  auto-login style="max-width:100%" />
           <!-- <div class="input-div">
             <input id="accountEmail" type="text"  required pattern="\S+"/>
@@ -103,6 +103,7 @@ const callback = (response) => {
     transition: 0.3s all;
     overflow: hidden;
     overflow-y: auto;
+    text-align: center;
     .login-div{
       position: relative;
       width: calc(100% - 20px);
