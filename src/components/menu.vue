@@ -37,7 +37,7 @@ const menuList = ref([
   },
   {
     type: 'link',
-    name:  t('Menu.home'),
+    name:  '物件管理',
     icon: 'home',
     path: '/home',
     isActive: false
@@ -47,13 +47,27 @@ const menuList = ref([
   },
   {
     type: 'category',
-    name:  t('Menu.tenant-management')
+    name:  '合約管理'
   },
   {
     type: 'link',
-    name: t('Menu.tenant-list'),
+    name: '合約',
     icon: 'recent_actors',
-    path: '/tenant-list',
+    path: '/contract-list',
+    isActive: false
+  },
+  {
+    type: 'line'
+  },
+  {
+    type: 'category',
+    name:  '帳務管理'
+  },
+  {
+    type: 'link',
+    name: '帳務列表',
+    icon: 'request_quote',
+    path: '/bill-list',
     isActive: false
   },
   // {

@@ -11,7 +11,9 @@ import PublicationPlan from '@/pages/home/publicationPlan.vue'
 import PayTheFee from '@/pages/home/payTheFee.vue'
 import PublicationSuccess from '@/pages/home/publicationSuccess.vue'
 
-import TenantList from '@/pages/tenant/tenant-list.vue'
+import ContractList from '@/pages/contract/contract-list.vue'
+import BillMonthList from '@/pages/bill/bill-month-list.vue'
+import BillList from '@/pages/bill/bill-list.vue'
 import MessageList from '@/pages/message/message-list.vue'
 
 const routes = [
@@ -84,14 +86,33 @@ const routes = [
   // },
 
   {
-    path: '/tenant-list',
-    name: 'tenant-list',
-    component: TenantList,
+    path: '/contract-list',
+    name: 'contract-list',
+    component: ContractList,
     meta: { 
       keepAlive: true, 
       title: '房客列表'
     } 
   },
+  {
+    path: '/bill-list',
+    name: 'bill-month-list',
+    component: BillMonthList,
+    meta: { 
+      keepAlive: true, 
+      title: '帳單列表-月'
+    }
+  },
+  {
+    path: '/bill-list/:month',
+    name: 'bill-list',
+    component: BillList,
+    meta: { 
+      keepAlive: true, 
+      title: '帳單列表'
+    }
+  },
+
   // {
   //   path: '/tenant-list/:userId',
   //   name: 'tenant-info',
