@@ -125,7 +125,7 @@ const tableHeaders = ref([
 const tableItems = ref([
   {
     id: 1,
-    options: ["view"],
+    options: ["download"],
     name: "陳小華",
     platform: "line",
     phone: "0912345678",
@@ -139,7 +139,7 @@ const tableItems = ref([
   },
   {
     id: 2,
-    options: ["view"],
+    options: ["download"],
     name: "林月嬌",
     platform: "line",
     phone: "0912345678",
@@ -393,6 +393,14 @@ contractStartDate.value =  new Date().toISOString().substr(0, 10);
                             </span> -->
                 查看
               </button>
+              <a href="https://my.ksu.edu.tw/file/web/CHT/DASACLS/2987845b-5fbd-4034-982f-f626b32020f5.pdf" target="_blank">
+                <button
+                  class="btn btn-outline-primary"
+                  v-if="row.options.includes('download')"
+                >
+                  下載
+                </button>
+              </a>
             </template>
             <template #item-lease="row">
               <div>
@@ -437,7 +445,7 @@ contractStartDate.value =  new Date().toISOString().substr(0, 10);
             <div>
               <div class="input-group">
                 <!-- <div class="text-input"> -->
-                <input type="text" placeholder="" value="陳小華"/>
+                <input type="text" placeholder=""/>
                 <!-- </div> -->
               </div>
             </div>
@@ -446,7 +454,7 @@ contractStartDate.value =  new Date().toISOString().substr(0, 10);
             <label for=""><small class="text-danger">*</small> 租金</label>
             <div>
               <div class="input-group">
-                <input type="number" placeholder="請輸入租金" value="10000" />
+                <input type="number" placeholder="請輸入租金" />
               </div>
             </div>
           </div>
@@ -455,7 +463,7 @@ contractStartDate.value =  new Date().toISOString().substr(0, 10);
             <div>
               <div class="input-group">
                 <!-- <div class="text-input"> -->
-                <input type="text" placeholder="" value="5"/>
+                <input type="text" placeholder="" />
                 <!-- </div> -->
               </div>
             </div>
@@ -516,7 +524,7 @@ contractStartDate.value =  new Date().toISOString().substr(0, 10);
             <div>
               <div class="checkbox-group">
                   <label class="checkbox-label">
-                      <input type="checkbox" :id="'houseTypeCheckbox-1'" checked>
+                      <input type="checkbox" :id="'houseTypeCheckbox-1'">
                       <span></span>
                       <label :for="'houseTypeCheckbox-1'">套房</label>
                   </label>
@@ -531,7 +539,7 @@ contractStartDate.value =  new Date().toISOString().substr(0, 10);
                       <label :for="'houseTypeCheckbox-3'">整層住家</label>
                   </label>
                   <label class="checkbox-label">
-                      <input type="checkbox" :id="'houseTypeCheckbox-4'" checked>
+                      <input type="checkbox" :id="'houseTypeCheckbox-4'">
                       <span></span>
                       <label :for="'houseTypeCheckbox-4'">店面</label>
                   </label>

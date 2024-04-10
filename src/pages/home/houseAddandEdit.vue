@@ -47,15 +47,15 @@ watch(houseTypeIndex, (val) => {
 
 <template>
   <div class="content-page">
-    <div class="box">
-        <div class="box-top" v-if="pageType==='add-rent'">
-            刊登租盤廣告
+    <div class="box" v-if="pageType.match(/add-sale|add-rent/)">
+        <div class="box-top" v-if="pageType.match(/add-rent|edit-rent/)">
+            {{ pageType.match(/add-rent/) ?'刊登租盤廣告':'編輯租盤廣告' }}
             <span>
                 （<small class="text-danger">*</small> 為必填項）
             </span>
         </div>
-        <div class="box-top" v-if="pageType==='add-sale'">
-            刊登售盤廣告
+        <div class="box-top" v-if="pageType.match(/add-sale|edit-sale/)">
+            {{ pageType.match(/add-sale/) ?'刊登售盤廣告':'編輯售盤廣告' }}
             <span>
                 （<small class="text-danger">*</small> 為必填項）
             </span>
@@ -144,8 +144,8 @@ watch(houseTypeIndex, (val) => {
             </div>
 
             <div>
-                <label for="" v-if="pageType==='add-rent'">出租樓層</label>
-                <label for="" v-if="pageType==='add-sale'">出售樓層</label>
+                <label for="" v-if="pageType.match(/add-rent|edit-rent/)">出租樓層</label>
+                <label for="" v-if="pageType.match(/add-sale|edit-sale/)">出售樓層</label>
                 <div>
                     <div class="input-group">
                         <select id="seleceFloor" autocomplete="off" style="width: 130px;"><option value="0" selected="selected">選擇樓層範圍</option> <option value="1002">高層</option> <option value="1003">中層</option> <option value="1004">低層</option> <option value="1005">頂樓加建</option> <option value="1001">地下</option> <option value="1006">整栋</option> <option value="9000">輸入具體樓層</option></select>
@@ -213,7 +213,7 @@ watch(houseTypeIndex, (val) => {
                     </div>
                 </div>
             </div>
-            <div v-if="pageType==='add-sale'">
+            <div v-if="pageType.match(/add-sale|edit-sale/)">
                 <label for=""> <small class="text-danger">*</small> 售價 </label>
                 <div>
                     <div class="input-group">
@@ -224,7 +224,7 @@ watch(houseTypeIndex, (val) => {
                     </div>
                 </div>
             </div>
-            <div v-if="pageType==='add-sale'">
+            <div v-if="pageType.match(/add-sale|edit-sale/)">
                 <label for="">可否議價</label>
                 <div>
                     <div class="checkbox-group">
@@ -236,7 +236,7 @@ watch(houseTypeIndex, (val) => {
                     </div>
                 </div>
             </div>
-            <div v-if="pageType==='add-sale'">
+            <div v-if="pageType.match(/add-sale|edit-sale/)">
                 <label for=""> 管理費 </label>
                 <div>
                     <div class="input-group">
@@ -249,7 +249,7 @@ watch(houseTypeIndex, (val) => {
             </div>
         </div>
     </div>
-    <div class="box" v-if="pageType==='add-rent'">
+    <div class="box" v-if="pageType.match(/add-rent|edit-rent/)">
         <div class="box-top">
             租賃信息
         </div>

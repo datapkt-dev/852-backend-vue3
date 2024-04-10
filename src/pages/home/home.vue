@@ -163,7 +163,7 @@ const tabIndex = ref(1);
                     <div>2024-03-07 錄入</div>
                     <div>
                         <!-- <button class="btn btn-info">分享</button> -->
-                        <button class="btn btn-info">修改</button>
+                        <button class="btn btn-info" @click="key==1?router.push('/home/edit-rent'):router.push('/home/edit-sale')">修改</button>
                         <!-- <button class="btn btn-info">複製</button> -->
                     </div>
                 </div>
