@@ -34,61 +34,73 @@ const isOpenAccountBox = ref(false)
 
 const menuList = ref([
   {
-    type: 'line'
+    type: 'line',
+    isAccountVerify: 2
   },
   {
     type: 'category',
-    name: t('Menu.house-management')
+    name: t('Menu.house-management'),
+    isAccountVerify: 1
   },
   {
     type: 'link',
     name:  '物件管理',
     icon: 'home',
     path: '/home',
-    isActive: false
+    isActive: false,
+    isAccountVerify: 1
   },
   {
-    type: 'line'
+    type: 'line',
+    isAccountVerify: 2
   },
   {
     type: 'category',
-    name:  '合約管理'
+    name:  '合約管理',
+    isAccountVerify: 2
   },
   {
     type: 'link',
     name: '租客列表',
     icon: 'people',
     path: '/tenant-list',
-    isActive: false
+    isActive: false,
+    isAccountVerify: 2
   },
   {
     type: 'link',
     name: '合約',
     icon: 'recent_actors',
     path: '/contract-list',
-    isActive: false
+    isActive: false,
+    isAccountVerify: 2
   },
   {
-    type: 'line'
+    type: 'line',
+    isAccountVerify: 2
   },
   {
     type: 'category',
-    name:  '帳務管理'
+    name:  '帳務管理',
+    isAccountVerify: 2
   },
   {
     type: 'link',
     name: '帳務列表',
     icon: 'request_quote',
     path: '/bill-list',
-    isActive: false
+    isActive: false,
+    isAccountVerify: 2
   },
   {
-    type: 'line'
+    type: 'line',
+    isAccountVerify: 2
   },
   {
     type: 'category',
     name: t('Menu.member-center'),
-    isAccountVerify: true
+    isAccountVerify: true,
+    isAccountVerify: 0
   },
   {
     type: 'link',
@@ -96,7 +108,7 @@ const menuList = ref([
     icon: 'account_box',
     path: '/profile',
     isActive: false,
-    isAccountVerify: true
+    isAccountVerify: 0
   },
 ])
 
@@ -172,7 +184,7 @@ watch(() =>  isShowMobile.value, (val) => {
     </div>
     <div class="menu-list-div" :style="isOpenAccountBox?'padding: 0 0 130px 0;':'padding: 0 0 60px 0;'">
       <template v-for="(menuItem, menuIndex) in menuList">
-        <div v-if="menuItem.type=='link' && (commonStore.accountVerify>0 || menuItem.isAccountVerify)" class="menu-item" :class="(menuItem.isActive || route.path==menuItem.path)?'active':''">
+        <div v-if="menuItem.type=='link' && (commonStore.accountVerify>=menuItem.isAccountVerify)" class="menu-item" :class="(menuItem.isActive || route.path==menuItem.path)?'active':''">
           <div @click="isShowMobile=false;router.push(menuItem.path);">
             <div>
               <span class="material-icons-outlined">
@@ -184,8 +196,8 @@ watch(() =>  isShowMobile.value, (val) => {
             </div>
           </div>
         </div>
-        <div v-if="menuItem.type=='line' && (commonStore.accountVerify>0 || menuItem.isAccountVerify)" class="line my-1" :key="menuIndex+'line'"></div>
-        <div v-if="menuItem.type=='category' && (commonStore.accountVerify>0 || menuItem.isAccountVerify)" class="menu-category-title" :key="menuIndex+'category'">
+        <div v-if="menuItem.type=='line' && (commonStore.accountVerify>=menuItem.isAccountVerify)" class="line my-1" :key="menuIndex+'line'"></div>
+        <div v-if="menuItem.type=='category' && (commonStore.accountVerify>=menuItem.isAccountVerify)" class="menu-category-title" :key="menuIndex+'category'">
           {{menuItem.name}}
         </div>
       </template>

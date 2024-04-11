@@ -218,8 +218,8 @@ const houseQAHandler = (key) =>{
                     <div>2024-03-07 錄入</div>
                     <div>
                         <!-- <button class="btn btn-info">分享</button> -->
-                        <button class="btn btn-info mr-1" @click="houseQAHandler(key)">房屋問答</button>
-                        <button class="btn btn-info" @click="key==1?router.push('/home/edit-rent'):router.push('/home/edit-sale')">修改</button>
+                        <button class="btn btn-info mr-1" @click="houseQAHandler(key)" :title="commonStore.accountVerify!=2?'帳號審核通過即可使用房屋問答':''" :disabled="commonStore.accountVerify!=2">房屋問答</button>
+                        <button class="btn btn-info" @click="key==1?router.push('/home/edit-rent'):router.push('/home/edit-sale')" :title="commonStore.accountVerify!=2?'帳號審核通過即可修改':''" :disabled="commonStore.accountVerify!=2">修改</button>
                         <!-- <button class="btn btn-info">複製</button> -->
                     </div>
                 </div>
@@ -254,8 +254,8 @@ const houseQAHandler = (key) =>{
                     <div>2024-03-07 錄入</div>
                     <div>
                         <!-- <button class="btn btn-info">分享</button> -->
-                        <button class="btn btn-info mr-1" @click="houseQAHandler(key)">房屋問答</button>
-                        <button class="btn btn-info" @click="key==1?router.push('/home/edit-rent'):router.push('/home/edit-sale')">修改</button>
+                        <button class="btn btn-info mr-1" @click="houseQAHandler(key)" :title="commonStore.accountVerify!=2?'帳號審核通過即可使用房屋問答':''" :disabled="commonStore.accountVerify!=2">房屋問答</button>
+                        <button class="btn btn-info" @click="key==1?router.push('/home/edit-rent'):router.push('/home/edit-sale')" :title="commonStore.accountVerify!=2?'帳號審核通過即可修改':''" :disabled="commonStore.accountVerify!=2">修改</button>
                         <!-- <button class="btn btn-info">複製</button> -->
                     </div>
                 </div>
