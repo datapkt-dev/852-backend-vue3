@@ -261,7 +261,7 @@ const houseQAHandler = (key) =>{
                 </div>
                 <div></div>
                 <div>
-                    <button class="btn btn-block btn-outline-primary mb-1">開啟</button>
+                    <button class="btn btn-block btn-outline-primary mb-1" :title="commonStore.accountVerify!=2?'帳號審核通過即可開啟':''" :disabled="commonStore.accountVerify!=2">開啟</button>
                     <button class="btn btn-block btn-outline-danger">刪除</button>
                 </div>
             </div>
