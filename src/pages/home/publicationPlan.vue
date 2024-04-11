@@ -17,15 +17,32 @@ const pageType = computed(() => {
 })
 
 const planIndex = ref(-1);
+const isplane = ref(true);
 
 </script>
 
 <template>
   <div class="content-page">
     <div class="box">
-        <StatusDiv :statusId="'2'"/>
+        <StatusDiv :statusId="'2'" :isplane="isplane"/>
     </div>
     <div class="box">
+        <div class="box-top">
+            是否需要刊登廣告
+        </div>
+        <div class="plan-div flex" style="justify-content: start;">
+        <label class="radiobox" for="radio-isplane-1">
+            <input type="radio" name="radio-isplane" id="radio-isplane-1" value="false" @click="isplane=false" :checked="isplane==false">
+            <div></div> 不刊登
+        </label> 
+        <label class="radiobox" for="radio-isplane-2">
+            <input type="radio" name="radio-isplane" id="radio-isplane-2"  value="true" @click="isplane=true" :checked="isplane">
+            <div></div> 選擇刊登方案
+        </label> 
+        </div>
+    </div>
+
+    <div class="box" v-if="isplane">
         <div class="box-top">
             購買刊登方案
         </div>
@@ -92,7 +109,7 @@ const planIndex = ref(-1);
         </div>
         <div class="pt-1 text-gray">TIPS：每個租盤可在30日內啟用，且可無限次更換廣告。多筆長期付費方案</div>
     </div>
-    <div class="box">
+    <div class="box" v-if="isplane">
         <div class="box-top">
             多筆長期付費方案
         </div>
@@ -120,7 +137,7 @@ const planIndex = ref(-1);
                         <td>12個月內啟用</td>
                         <td>$167</td>
                         <td>
-                            <label for="radio-plane-1">
+                            <label class="radiobox" for="radio-plane-1">
                                 <input type="radio" name="radio-plane" id="radio-plane-1">
                                 <div></div>
                             </label>
@@ -135,7 +152,7 @@ const planIndex = ref(-1);
                         <td>12個月內啟用</td>
                         <td>$142</td>
                         <td>
-                            <label for="radio-plane-2">
+                            <label class="radiobox" for="radio-plane-2">
                                 <input type="radio" name="radio-plane" id="radio-plane-2">
                                 <div></div>
                             </label>
@@ -150,7 +167,7 @@ const planIndex = ref(-1);
                         <td>12個月內啟用</td>
                         <td>$120</td>
                         <td>
-                            <label for="radio-plane-3">
+                            <label class="radiobox" for="radio-plane-3">
                                 <input type="radio" name="radio-plane" id="radio-plane-3">
                                 <div></div>
                             </label>
@@ -162,7 +179,8 @@ const planIndex = ref(-1);
     </div>
     <div class="box flex-space">
         <button class="btn btn-outline-primary" @click="router.go(-1)">Back</button>
-        <button class="btn btn-primary" @click="router.push('/home/add-rent/pay-the-fee')">下一步</button>
+        <button v-if="isplane" class="btn btn-primary" @click="router.push('/home/add-rent/pay-the-fee')">下一步</button>
+        <button v-if="!isplane" class="btn btn-primary" @click="router.push('/home/add-rent/success?isplane=false')">下一步</button>
     </div>
   </div>
 </template>
@@ -262,25 +280,7 @@ const planIndex = ref(-1);
                         padding: 20px 0;
                         border-bottom: 1px solid #f0f0f0;
                         text-align: center;
-                        >label{
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            >input{
-                                display: none;
-                                &:checked + div{
-                                    background-color: var(--bs-primary);
-                                    color: #fff;
-                                }
-                            }
-                            >div{
-                                width: 20px;
-                                height: 20px;
-                                border: 1px solid var(--bs-gray);
-                                border-radius: 50%;
-                                cursor: pointer;
-                            }
-                        }
+                        
                     }
                     &:nth-last-child(1){
                         >td{
@@ -291,7 +291,27 @@ const planIndex = ref(-1);
             }
         }
     }
-
+    .radiobox{
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin-right: 20px;
+        >input{
+            display: none;
+            &:checked + div{
+                background-color: var(--bs-primary);
+                color: #fff;
+            }
+        }
+        >div{
+            width: 20px;
+            height: 20px;
+            border: 1px solid var(--bs-gray);
+            border-radius: 50%;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+    }
     .choose-box{
         position: relative;
         &::before {

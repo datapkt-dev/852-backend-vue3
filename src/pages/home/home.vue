@@ -6,6 +6,9 @@ import "@/assets/css/content.scss";
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 
+import { useCommonStore } from '@/store/commonStore'
+const commonStore = useCommonStore()
+
 const router = useRouter();
 const route = useRoute();
 
@@ -19,20 +22,72 @@ const imgUserUrl = (url) => {
 }
 
 const tabIndex = ref(1);
+const houseTypeTabIndex = ref(0);
+
+const isHouseQABoxOpen = ref(false);
+
+const houseQAHandler = (key) =>{
+    isHouseQABoxOpen.value = true;
+    console.log(key);
+}
 
 
 
 </script>
 
 <template>
+
+  <div
+    class="window-box-cover"
+    :class="isHouseQABoxOpen ? 'active' : ''"
+  >
+    <div class="window-box">
+        <div class="window-box-close" @click="isHouseQABoxOpen = false">
+            <span class="material-icons-outlined"> close </span>
+        </div>
+        <div class="window-box-title">房屋問答</div>
+        <div class="window-box-content">
+            <div class="qa-item">
+                <img src="@/assets/images/user/01.webp" alt="">
+                <div>
+                    <div>
+                        <span>No.123456</span>
+                        <span>2024-01-01</span>
+                    </div>
+                    <div>
+                        電費怎麼算?
+                        <button class="btn btn-sm">
+                            <span class="material-icons-outlined">
+                                delete
+                            </span>
+                        </button>
+                    </div>
+                    <div>
+                        <span>回覆：</span>
+                        <span>
+
+                        </span>
+                    </div>
+                    <div>
+                        <textarea name="" id="" rows="10" maxlength="500"></textarea>
+                    </div>
+                    <div>
+                        0/500
+                        <button class="btn btn-primary">提交回覆</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
   <div class="content-page">
     <div class="home-top">
         <div>
-            <div class="edit-btn">
+            <div class="edit-btn" @click="router.push('/profile')">
                 <span class="material-icons-outlined">
                 edit_note
                 </span>
-                <span>修改</span>
+                <span>編輯</span>
             </div>
             <div>
                 <div class="user-img">
@@ -73,9 +128,9 @@ const tabIndex = ref(1);
                 <button class="btn btn-primary">
                     購買
                 </button>
-                <a>上傳收據</a>
+                <!-- <a>上傳收據</a> -->
             </div>
-            <div>
+            <!-- <div>
                 <div>競價點</div>
                 <div>0</div>
                 <button class="btn btn-primary">
@@ -97,7 +152,7 @@ const tabIndex = ref(1);
                     購買
                 </button>
                 <a>尊尚組合方案</a>
-            </div>
+            </div> -->
         </div>
     </div>
     <div class="house-div">
@@ -107,8 +162,8 @@ const tabIndex = ref(1);
                 <div class="tab" :class="tabIndex==1?'active':''" @click="tabIndex = 1">關閉中的樓盤</div>
             </div>
             <div>
-                <button class="btn btn-info">租盤</button>
-                <button class="btn btn-outline-info">售盤</button>
+                <button class="btn btn-outline-info mr-1" :class="houseTypeTabIndex==0?'btn-info':''" @click="houseTypeTabIndex=0">租盤</button>
+                <button class="btn btn-outline-info" :class="houseTypeTabIndex==1?'btn-info':''" @click="houseTypeTabIndex=1">售盤</button>
             </div>
         </div>
         <div class="filter-list-div">
@@ -141,7 +196,43 @@ const tabIndex = ref(1);
             </div>
         </div>
     </div>
-    <div class="house-list-div">
+    <div class="house-list-div" v-if="tabIndex==0">
+        <div class="house-item" v-for="(key) in 2">
+            <div class="sysid-div">房源編號：R1132552</div>
+            <div>
+                <div class="house-img">
+                    <img src="" alt="">
+                </div>
+                <div>
+                    <div>
+                        汝州街123號
+                        <span>[屋苑]</span>
+                        <div>刊登中</div>
+                    </div>
+                    <div>1房1廳中層近上水站園景設備齊全可飼養寵</div>
+                    <div>中層/共12層 1房1廳 23呎(實)</div>
+                    <div>0人瀏覽</div>
+                </div>
+                <div>
+                    <div><span>10,000</span> 元/月</div>
+                    <div>2024-03-07 錄入</div>
+                    <div>
+                        <!-- <button class="btn btn-info">分享</button> -->
+                        <button class="btn btn-info mr-1" @click="houseQAHandler(key)">房屋問答</button>
+                        <button class="btn btn-info" @click="key==1?router.push('/home/edit-rent'):router.push('/home/edit-sale')">修改</button>
+                        <!-- <button class="btn btn-info">複製</button> -->
+                    </div>
+                </div>
+                <div></div>
+                <div>
+                    <button class="btn btn-block btn-outline-primary mb-1">關閉</button>
+                    <button class="btn btn-block btn-outline-danger">刪除</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="house-list-div" v-if="tabIndex==1">
         <div class="house-item" v-for="(key) in 2">
             <div class="sysid-div">房源編號：R1132552</div>
             <div>
@@ -163,22 +254,23 @@ const tabIndex = ref(1);
                     <div>2024-03-07 錄入</div>
                     <div>
                         <!-- <button class="btn btn-info">分享</button> -->
+                        <button class="btn btn-info mr-1" @click="houseQAHandler(key)">房屋問答</button>
                         <button class="btn btn-info" @click="key==1?router.push('/home/edit-rent'):router.push('/home/edit-sale')">修改</button>
                         <!-- <button class="btn btn-info">複製</button> -->
                     </div>
                 </div>
                 <div></div>
                 <div>
-                    <button class="btn btn-block btn-primary mb-1">開啟</button>
+                    <button class="btn btn-block btn-outline-primary mb-1">開啟</button>
                     <button class="btn btn-block btn-outline-danger">刪除</button>
                 </div>
             </div>
 
         </div>
     </div>
-    <div v-if="tabIndex==0" class="mt-15 text-center">
-        <button class="btn btn-primary mx-1" @click="router.push('/home/add-rent')">刊登租盤廣告</button>
-        <button class="btn btn-primary mx-1" @click="router.push('/home/add-sale')">刊登售盤廣告</button>
+    <div class="mt-15 text-center">
+        <button class="btn btn-primary mx-1" @click="router.push('/home/add-rent')" :title="commonStore.accountVerify!=2?'帳號審核通過即可刊登租盤廣告':''" :disabled="commonStore.accountVerify!=2">刊登租盤廣告</button>
+        <button class="btn btn-primary mx-1" @click="router.push('/home/add-sale')" :title="commonStore.accountVerify!=2?'帳號審核通過即可刊登售盤廣告':''" :disabled="commonStore.accountVerify!=2">刊登售盤廣告</button>
     </div>
   </div>
 </template>
@@ -478,6 +570,73 @@ const tabIndex = ref(1);
             }
         }
     }
+
+    
+    .qa-item{
+        display: flex;
+        margin-bottom: 20px;
+        align-items: self-start;
+        >img{
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 20px;
+            background: var(--bs-gray-400);
+        }
+        >div{
+            flex: 1;
+            >div{
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 10px;
+            }
+            >div:nth-child(1){
+                display: flex;
+                justify-content: start;
+                margin-bottom: 10px;
+                >span{
+                    font-size: 14px;
+                    color: #999;
+                    &:first-child{
+                        margin-right: 10px;
+                        color: var(--bs-primary);
+                    }
+                }
+            }
+            >div:nth-child(2){
+                font-size: 20px;
+                font-weight: bold;
+                margin-bottom: 10px;
+                >button{
+                    margin-left: 10px;
+                }
+            }
+            >div:nth-child(3){
+                background: #F6F6F6;
+                justify-self: start;
+                font-size: 16px;
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+            >div:nth-child(4){
+                margin-bottom: 10px;
+                >textarea{
+                    width: 100%;
+                    padding: 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                }
+            }
+            >div:nth-child(5){
+                display: flex;
+                justify-content: space-between;
+                >button{
+                    padding: 5px 20px;
+                }
+            }
+        }
+    }
+
 
     @media (max-width: 1200px) {
         .home-top{

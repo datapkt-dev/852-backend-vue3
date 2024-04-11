@@ -12,6 +12,7 @@ import PayTheFee from '@/pages/home/payTheFee.vue'
 import PublicationSuccess from '@/pages/home/publicationSuccess.vue'
 
 import ContractList from '@/pages/contract/contract-list.vue'
+import TenantList from '@/pages/tenant/tenant-list.vue'
 import BillMonthList from '@/pages/bill/bill-month-list.vue'
 import BillList from '@/pages/bill/bill-list.vue'
 import MessageList from '@/pages/message/message-list.vue'
@@ -111,6 +112,16 @@ const routes = [
       keepAlive: true, 
       title: '帳單列表'
     }
+  },
+
+  {
+    path: '/tenant-list',
+    name: 'tenant-list',
+    component: TenantList,
+    meta: { 
+      keepAlive: false, 
+      title: '房客列表'
+    } 
   },
 
   // {

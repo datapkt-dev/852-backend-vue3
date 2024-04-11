@@ -207,9 +207,9 @@ const openSendEmail = (row) => {
 };
 
 const contractUser = ref("");
-if(localStorage.getItem('user')){
-  contractUser.value = JSON.parse(localStorage.getItem('user')).name;
-}
+// if(localStorage.getItem('user')){
+//   contractUser.value = JSON.parse(localStorage.getItem('user')).name;
+// }
 const contractStartDate = ref("");
 
 // today
@@ -435,7 +435,7 @@ contractStartDate.value =  new Date().toISOString().substr(0, 10);
             <div>
               <div class="input-group">
                 <!-- <div class="text-input"> -->
-                <input type="text" placeholder="" v-model="contractUser" disabled/>
+                <input type="text" placeholder="" v-model="contractUser"/>
                 <!-- </div> -->
               </div>
             </div>

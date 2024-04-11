@@ -316,13 +316,13 @@ const openSendEmail = (row) => {
           </div>
         </div>
 
-        <button
+        <!-- <button
           class="btn btn-outline-primary"
           @click="isAddEditTenantWindowOpen = true"
         >
           <span class="material-icons-outlined"> add </span>
           新增房客
-        </button>
+        </button> -->
       </div>
     </div>
     <div class="content-title">房客列表</div>

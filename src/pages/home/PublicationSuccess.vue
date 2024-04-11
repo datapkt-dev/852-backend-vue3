@@ -16,12 +16,19 @@ const pageType = computed(() => {
   return route.params.pageType;
 })
 
+const isplane = ref(true);
+
+// get from url ?isplane=false
+if(route.query.isplane == 'false'){
+  isplane.value = false;
+}
+
 </script>
 
 <template>
   <div class="content-page">
     <div class="box">
-        <StatusDiv :statusId="'4'"/>
+        <StatusDiv :statusId="'4'" :isplane="isplane"/>
     </div>
     <div class="box success-box">
         <span class="material-icons-outlined">

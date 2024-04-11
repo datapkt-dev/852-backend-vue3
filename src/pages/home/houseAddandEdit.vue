@@ -43,21 +43,85 @@ watch(houseTypeIndex, (val) => {
   houseTypeChildrenIndex.value = 0;
 })
 
+
+const isContactPersonBoxOpen = ref(false);
+const contactPersonData = ref([
+    {
+        name: '',
+        phone: ''
+    }
+])
+
+const contactPersonList = ref([])
+
+const addContactPerson = () => {
+    contactPersonList.value.push({
+        name: contactPersonData.value.name,
+        phone: contactPersonData.value.phone
+    })
+    contactPersonData.value.name = ''
+    contactPersonData.value.phone = ''
+    isContactPersonBoxOpen.value = false
+}
+
+const delContactPerson = (index) => {
+  contactPersonList.value.splice(index, 1)
+}
 </script>
 
 <template>
+  <div
+    class="window-box-cover"
+    :class="isContactPersonBoxOpen ? 'active' : ''"
+  >
+    <div class="window-box">
+      <div class="window-box-close" @click="isContactPersonBoxOpen = false">
+        <span class="material-icons-outlined"> close </span>
+      </div>
+      <div class="window-box-title">新增聯絡人</div>
+      <div class="window-box-content">
+        <div class="form-div">
+          <div>
+            <label for=""><small class="text-danger">*</small> 聯絡人姓名</label>
+            <div>
+              <div class="input-group">
+                <input type="text" placeholder="" v-model="contactPersonData.name"/>
+              </div>
+            </div>
+          </div>
+          <div>
+            <label for=""><small class="text-danger">*</small> 聯絡人電話</label>
+            <div>
+              <div class="input-group">
+                <input type="text" placeholder="" v-model="contactPersonData.phone"/>
+              </div>
+            </div>
+          </div>
+            <div class="px-1" style="display: block;text-align: end;">
+                <button class="btn btn-info" @click="addContactPerson()" :disabled="contactPersonData.name=='' || contactPersonData.phone == ''">新增</button>
+            </div>
+
+        </div>
+      </div>
+
+      <!-- <div class="window-box-btns">
+        <button class="btn btn-primary">確定</button>
+        <button class="btn btn-outline-primary">取消</button>
+      </div> -->
+    </div>
+  </div>
   <div class="content-page">
     <div class="box" v-if="pageType.match(/add-sale|add-rent/)">
         <div class="box-top" v-if="pageType.match(/add-rent|edit-rent/)">
             {{ pageType.match(/add-rent/) ?'刊登租盤廣告':'編輯租盤廣告' }}
             <span>
-                （<small class="text-danger">*</small> 為必填項）
+                （<small class="text-danger">(必填)</small> 為必填項）
             </span>
         </div>
         <div class="box-top" v-if="pageType.match(/add-sale|edit-sale/)">
             {{ pageType.match(/add-sale/) ?'刊登售盤廣告':'編輯售盤廣告' }}
             <span>
-                （<small class="text-danger">*</small> 為必填項）
+                （<small class="text-danger">(必填)</small> 為必填項）
             </span>
         </div>
         <StatusDiv :statusId="'1'"/>
@@ -68,7 +132,7 @@ watch(houseTypeIndex, (val) => {
         </div>
         <div class="form-div">
             <div>
-                <label for=""><small class="text-danger">*</small> 物業用途</label>
+                <label for=""><small class="text-danger">(必填)</small> 物業用途</label>
                 <div>
                     <div class="radio-group">
                         <label v-for="(item,index) in HouseTypeArray" :key="index" class="radio-label">
@@ -88,7 +152,7 @@ watch(houseTypeIndex, (val) => {
             </div>
 
             <div>
-                <label for=""><small class="text-danger">*</small> 屋苑/樓盤</label>
+                <label for=""><small class="text-danger">(必填)</small> 屋苑/樓盤</label>
                 <div>
                     <div class="input-group">
                         <div class="text-input">
@@ -114,7 +178,7 @@ watch(houseTypeIndex, (val) => {
             </div>
 
             <div>
-                <label for=""><small class="text-danger">*</small> 單位資料</label>
+                <label for=""><small class="text-danger">(必填)</small> 單位資料</label>
                 <div>
                     <div class="input-group">
                         <div class="text-input word-0-1">
@@ -214,7 +278,7 @@ watch(houseTypeIndex, (val) => {
                 </div>
             </div>
             <div v-if="pageType.match(/add-sale|edit-sale/)">
-                <label for=""> <small class="text-danger">*</small> 售價 </label>
+                <label for=""> <small class="text-danger">(必填)</small> 售價 </label>
                 <div>
                     <div class="input-group">
                         <div class="text-input word-0-1">
@@ -257,7 +321,7 @@ watch(houseTypeIndex, (val) => {
             
 
             <div>
-                <label for=""> <small class="text-danger">*</small> 租金 </label>
+                <label for=""> <small class="text-danger">(必填)</small> 租金 </label>
                 <div>
                     <div class="input-group">
                         <div class="text-input word-0-1">
@@ -303,7 +367,7 @@ watch(houseTypeIndex, (val) => {
                 </div>
             </div>
             <div>
-                <label for=""> <small class="text-danger">*</small> 廣告標題 </label>
+                <label for=""> <small class="text-danger">(必填)</small> 廣告標題 </label>
                 <div>
                     <div class="input-group">
                         <input type="text" placeholder="如：中環優質寫字樓，實施完善，價平質優">
@@ -329,16 +393,12 @@ watch(houseTypeIndex, (val) => {
                     <div class="input-group">
                         <input type="file" name="" id="">
                     </div>
-                </div>
-            </div>
-            <div>
-                <label for="">VR睇樓	</label>
-                <div>
-                    <div class="input-group">
-                        <input type="text" name="" id="">
+                    <div class="text-info px-1">
+                        相片：支持JPG、GIF、PNG格式，限定每張房屋相片最大不能超過2MB，最多可以上傳15張相片，默認第一張為封面。
+                        不可上傳未經他人授權的相片，以及帶有非852的鏈接、網站、部落格鏈接。如：其他網站水印、網站名字、網址、指引性網址等。
                     </div>
                 </div>
-            </div>
+            </div> 
 
 
         </div>
@@ -352,7 +412,7 @@ watch(houseTypeIndex, (val) => {
 
             
             <div>
-                <label for=""> <small class="text-danger">*</small> 身份</label>
+                <label for=""> <small class="text-danger">(必填)</small> 身份</label>
                 <div>
                     <div class="checkbox-group">
                         <label v-for="(item,index) in HouseIdentityArray" :key="index" class="checkbox-label">
@@ -363,53 +423,30 @@ watch(houseTypeIndex, (val) => {
                     </div>
                 </div>
             </div>
-            <!-- <div>
+            <div>
                 <label for="">聯絡人</label>
-                <div>
-                    <div class="input-group">
-                        <input type="text" name="" id="">
+                <div class="contact-person-list">
+                    <div class="contact-person-item" v-for="(item,index) in contactPersonList" :key="index">
+                        <div>
+                            <label for="">聯絡人</label>
+                            <div>
+                                {{item.name}}
+                            </div>
+                        </div>
+                        <div>
+                            <label for="">聯絡人電話</label>
+                            <div>
+                                {{item.phone}}
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div> -->
-
-
-        </div>
-    </div>
-    <div class="box">
-        <div class="box-top">
-            房屋問答
-        </div>
-        <div class="form-div">
-            
-
-            
-            <div class="qa-item">
-                <img src="@/assets/images/user/01.webp" alt="">
-                <div>
-                    <div>
-                        <span>No.123456</span>
-                        <span>2024-01-01</span>
-                    </div>
-                    <div>
-                        電費怎麼算?
-                        <button class="btn btn-sm">
+                    <div class="contact-person-item add">
+                        <button class="btn btn-outline-primary" @click="isContactPersonBoxOpen=true">
                             <span class="material-icons-outlined">
-                                delete
+                                add
                             </span>
+                            <span>新增聯絡人</span>
                         </button>
-                    </div>
-                    <div>
-                        <span>回覆：</span>
-                        <span>
-
-                        </span>
-                    </div>
-                    <div>
-                        <textarea name="" id="" rows="10" maxlength="500"></textarea>
-                    </div>
-                    <div>
-                        0/500
-                        <button class="btn btn-primary">提交回覆</button>
                     </div>
                 </div>
             </div>
@@ -440,6 +477,7 @@ watch(houseTypeIndex, (val) => {
                 font-weight: normal;
                 color: #999;
             }
+            
         }
     }
 
@@ -449,76 +487,92 @@ watch(houseTypeIndex, (val) => {
         width: 200px !important;
     }
 
+    .contact-person-list{
+        display: flex-wrap;
 
-    .qa-item{
-        display: flex;
-        margin-bottom: 20px;
-        align-items: self-start;
-        >img{
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            margin-right: 20px;
-            background: var(--bs-gray-400);
-        }
-        >div{
-            flex: 1;
+        .contact-person-item{
+            position: relative;
+            display: inline-block;
+            background: #f9f9f9;
+            vertical-align: top;
+            border-radius: 5px;
+            height: 80px;
+            padding: 15px;
+            width: 30%;
+            margin: 0 10px 10px 0;
             >div{
+                width: 100%;
                 display: flex;
-                justify-content: space-between;
-                margin-bottom: 10px;
-            }
-            >div:nth-child(1){
-                display: flex;
-                justify-content: start;
-                margin-bottom: 10px;
-                >span{
-                    font-size: 14px;
-                    color: #999;
-                    &:first-child{
-                        margin-right: 10px;
-                        color: var(--bs-primary);
-                    }
+                >label{
+                    width: 50%;
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: #333;
                 }
             }
-            >div:nth-child(2){
-                font-size: 20px;
-                font-weight: bold;
-                margin-bottom: 10px;
-                >button{
-                    margin-left: 10px;
-                }
-            }
-            >div:nth-child(3){
-                background: #F6F6F6;
-                justify-self: start;
-                font-size: 16px;
-                padding: 10px;
-                margin-bottom: 10px;
-            }
-            >div:nth-child(4){
-                margin-bottom: 10px;
-                >textarea{
+            &.add{
+                padding: 0px;
+                button{
                     width: 100%;
-                    padding: 10px;
-                    border: 1px solid #ccc;
+                    height: 100%;
+                    border: 1px dashed #ccc;
                     border-radius: 5px;
-                }
-            }
-            >div:nth-child(5){
-                display: flex;
-                justify-content: space-between;
-                >button{
-                    padding: 5px 20px;
+                    color: #ccc;
+                    font-size: 16px;
+                    font-weight: bold;
+                    >span{
+                        margin-right: 10px;
+                    }
                 }
             }
         }
     }
 
-
     @media (max-width: 1200px) {
         .box{
             padding:    10px;
+        }
+
+        
+        .contact-person-list{
+            display: flex-wrap;
+
+            .contact-person-item{
+                position: relative;
+                display: inline-block;
+                background: #f9f9f9;
+                vertical-align: top;
+                border-radius: 5px;
+                height: 80px;
+                padding: 15px;
+                width: 100%;
+                margin: 0 10px 10px 0;
+                >div{
+                    width: 100%;
+                    display: flex;
+                    >label{
+                        width: 50%;
+                        font-size: 16px;
+                        font-weight: bold;
+                        color: #333;
+                    }
+                }
+                &.add{
+                    padding: 0px;
+                    button{
+                        width: 100%;
+                        height: 100%;
+                        border: 1px dashed #ccc;
+                        border-radius: 5px;
+                        color: #ccc;
+                        font-size: 16px;
+                        font-weight: bold;
+                        >span{
+                            margin-right: 10px;
+                        }
+                    }
+                }
+            }
         }
     }
 

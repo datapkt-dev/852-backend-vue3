@@ -5,6 +5,10 @@ const props = defineProps({
     statusId: {
         type: String,
         default: '1'
+    },
+    isplane: {
+        type: Boolean,
+        default: true
     }
 })
 
@@ -14,27 +18,28 @@ console.log(props.statusId);
 
 <template>
     <div class="status-div">
-        <div :class="props.statusId.match(/1/)?'active':''">
+        <div :class="props.statusId.match(/1/)?'active':''" :style="!isplane?'width: calc(33.33% - 15px);':''">
             <div>1</div>
             <div>填寫資料</div>
         </div>
-        <div :class="props.statusId.match(/2/)?'active':''">
+        <div :class="props.statusId.match(/2/)?'active':''" :style="!isplane?'width: calc(33.33% - 15px);':''">
             <div>2</div>
             <div>確認刊登方案</div>
         </div>
-        <div :class="props.statusId.match(/3/)?'active':''">
+        <div :class="props.statusId.match(/3/)?'active':''" v-if="isplane">
             <div>3</div>
             <div>繳費</div>
         </div>
-        <div :class="props.statusId.match(/4/)?'active':''">
-            <div>4</div>
+        <div :class="props.statusId.match(/4/)?'active':''" :style="!isplane?'width: calc(33.33% - 15px);':''">
+            <div v-if="isplane">4</div>
+            <div v-if="!isplane">3</div>
             <div>完成刊登</div>
         </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
-
+    
 
     .status-div{
         display: flex;

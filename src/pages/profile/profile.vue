@@ -9,6 +9,9 @@ const { t } = useI18n()
 const router = useRouter();
 const route = useRoute();
 
+import { useCommonStore } from '@/store/commonStore'
+const commonStore = useCommonStore()
+
 
 const imgUserUrl = (url) => {
   if(url.match('http')){
@@ -48,6 +51,17 @@ const sendHandler = () =>{
     
 }
 
+const sendHaendler = (type) =>{
+    commonStore.setAccountVerify(type)
+}
+
+const VerificationPhone = ref('')
+const VerificationCode = ref('')
+
+const VerificationCodeSendHandler = () =>{
+    commonStore.setPhoneVerify(true)
+}
+
 </script>
 
 <template>
@@ -59,6 +73,14 @@ const sendHandler = () =>{
         <div class="home-top">
             <div>
                 <div class="form-div">
+                    <div>
+                        <label for=""><small class="text-danger">*</small> 審核狀態</label>
+                        <div>
+                            <div v-if="commonStore.accountVerify==0">未送審</div>
+                            <div v-if="commonStore.accountVerify==1">審核中</div>
+                            <div v-if="commonStore.accountVerify==2">已審核</div>
+                        </div>
+                    </div>
                     <div>
                         <label for=""><small class="text-danger">*</small> 頭像</label>
                         <div>
@@ -88,26 +110,37 @@ const sendHandler = () =>{
                         <div>
                             <div class="input-group ">
                                 <div>
-                                    <input type="text" v-model="googleUserData.phone"  placeholder="輸入手機號碼" :disabled="isVisableSend"/>
+                                    <input type="text" v-model="VerificationPhone"  placeholder="輸入手機號碼" :disabled="isVisableSend || commonStore.phoneVerify"/>
                                 </div>
-                                <button class="btn btn-outline-primary" @click="sendHandler()"  v-if="isVisableSend==false">
+                                <button class="btn btn-outline-primary" @click="sendHandler()"  v-if="isVisableSend==false && !commonStore.phoneVerify" :disabled="VerificationPhone==''">
                                     發送驗證碼
                                 </button>
-                                <div v-if="isVisableSend" :disabled="!canResend">沒有收到嗎?</div>
-                                <button class="btn btn-outline-primary" @click="sendHandler()"  v-if="isVisableSend" :disabled="!canResend">
+                                <div v-if="isVisableSend && !commonStore.phoneVerify" :disabled="!canResend">沒有收到嗎?</div>
+                                <button class="btn btn-outline-primary" @click="sendHandler()"  v-if="isVisableSend && !commonStore.phoneVerify" :disabled="!canResend">
                                     重發驗證碼 {{count_show}}
                                 </button>
-                                <div v-if="isVisableSend">
-                                    <input type="text" v-model="googleUserData.phone" placeholder="輸入驗證碼" />
+                                <div v-if="isVisableSend && !commonStore.phoneVerify">
+                                    <input type="text" v-model="VerificationCode" placeholder="輸入驗證碼" />
                                 </div>
-                                <button class="btn btn-primary" v-if="isVisableSend">
+                                <button class="btn btn-primary" v-if="isVisableSend && !commonStore.phoneVerify" :disabled="VerificationCode==''" @click="VerificationCodeSendHandler()">
                                     立即驗證
                                 </button>
+                                <div v-if="commonStore.phoneVerify">
+                                    <span class="text-success">已驗證</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                 </div>
+            </div>
+        </div>
+        <div class="home-top mt-1" v-if="commonStore.phoneVerify">
+            <div class="text-center">
+                <button class="btn btn-primary" v-if="commonStore.accountVerify==0" @click="sendHaendler(1)">送審</button>
+                <button class="btn btn-primary" v-if="commonStore.accountVerify==2"  @click="sendHaendler(1)">儲存並重新送審</button>
+
+                <button class="btn btn-light" v-if="commonStore.accountVerify==1"  @click="sendHaendler(2)"> 測試用按鈕 (轉成 已審核)</button>
             </div>
         </div>
     </div>
