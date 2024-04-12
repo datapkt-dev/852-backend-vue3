@@ -156,7 +156,7 @@ const delContactPerson = (index) => {
                 <div>
                     <div class="input-group">
                         <div class="text-input">
-                            <input type="text" placeholder="請輸入屋苑關鍵字">
+                            <input type="text" placeholder="請輸入屋苑關鍵字" :value="pageType.match(/edit-sale|edit-rent/)?'汝州街123號':''">
                         </div>
                     </div>
                 </div>
@@ -167,7 +167,7 @@ const delContactPerson = (index) => {
                 <div>
                     <div class="input-group">
                         <div class="text-input word-0-1">
-                            <input type="number">
+                            <input type="number" :value="pageType.match(/edit-sale|edit-rent/)?60:''">
                             <span>年</span>
                         </div>
                         <div class="text-gray">
@@ -182,11 +182,11 @@ const delContactPerson = (index) => {
                 <div>
                     <div class="input-group">
                         <div class="text-input word-0-1">
-                            <input type="number">
+                            <input type="number" :value="pageType.match(/edit-sale|edit-rent/)?1:''">
                             <span>房</span>
                         </div>
                         <div class="text-input word-0-1">
-                            <input type="number">
+                            <input type="number" :value="pageType.match(/edit-sale|edit-rent/)?1:''">
                             <span>廳</span>
                         </div>
                         <div class="">
@@ -212,7 +212,16 @@ const delContactPerson = (index) => {
                 <label for="" v-if="pageType.match(/add-sale|edit-sale/)">出售樓層</label>
                 <div>
                     <div class="input-group">
-                        <select id="seleceFloor" autocomplete="off" style="width: 130px;"><option value="0" selected="selected">選擇樓層範圍</option> <option value="1002">高層</option> <option value="1003">中層</option> <option value="1004">低層</option> <option value="1005">頂樓加建</option> <option value="1001">地下</option> <option value="1006">整栋</option> <option value="9000">輸入具體樓層</option></select>
+                        <select id="seleceFloor" autocomplete="off" style="width: 130px;" :value="pageType.match(/edit-sale|edit-rent/)?1003:''">
+                            <option value="0" selected="selected">選擇樓層範圍</option> 
+                            <option value="1002">高層</option> 
+                            <option value="1003">中層</option> 
+                            <option value="1004">低層</option> 
+                            <option value="1005">頂樓加建</option> 
+                            <option value="1001">地下</option> 
+                            <option value="1006">整栋</option> 
+                            <option value="9000">輸入具體樓層</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -222,7 +231,7 @@ const delContactPerson = (index) => {
                 <div>
                     <div class="input-group">
                         <div class="text-input word-1-1">
-                            <input type="number">
+                            <input type="number" :value="pageType.match(/edit-sale|edit-rent/)?12:''">
                             <span>共</span>
                             <span>層</span>
                         </div>
@@ -234,8 +243,25 @@ const delContactPerson = (index) => {
                 <label for="">補充資料</label>
                 <div>
                     <div class="input-group">
-                        <select name="position" style="width: 130px;"><option value="0">選擇坐向</option> <option value="1">東</option> <option value="2">東北</option> <option value="3">北</option> <option value="4">西北</option> <option value="5">西</option> <option value="6">西南</option> <option value="7" selected="selected">南</option> <option value="8">東南</option> <option value="99">不明</option></select>
-                        <select name="design" style="width: 130px;"><option value="">選擇裝修程度</option> <option value="1">未裝修</option> <option value="3">簡易裝修</option> <option value="4" selected="selected">雅緻裝修</option> <option value="5">豪華裝修</option></select>
+                        <select name="position" style="width: 130px;">
+                            <option value="0">選擇坐向</option> 
+                            <option value="1">東</option>
+                            <option value="2">東北</option>
+                            <option value="3">北</option>
+                            <option value="4">西北</option>
+                            <option value="5">西</option>
+                            <option value="6">西南</option>
+                            <option value="7" selected="selected">南</option>
+                            <option value="8">東南</option>
+                            <option value="99">不明</option>
+                        </select>
+                        <select name="design" style="width: 130px;">
+                            <option value="">選擇裝修程度</option>
+                             <option value="1">未裝修</option> 
+                             <option value="3">簡易裝修</option>
+                              <option value="4" selected="selected">雅緻裝修</option> 
+                              <option value="5">豪華裝修</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -282,7 +308,7 @@ const delContactPerson = (index) => {
                 <div>
                     <div class="input-group">
                         <div class="text-input word-0-1">
-                            <input type="number" class="rent">
+                            <input type="number" class="rent" :value="pageType.match(/edit-sale|edit-rent/)?10000:''">
                             <span>萬元</span>
                         </div>
                     </div>
@@ -325,7 +351,7 @@ const delContactPerson = (index) => {
                 <div>
                     <div class="input-group">
                         <div class="text-input word-0-1">
-                            <input type="number" class="rent">
+                            <input type="number" class="rent" :value="pageType.match(/edit-sale|edit-rent/)?10000:''">
                             <span>元/月</span>
                         </div>
                         <select id="deposit_s" name="deposit_s" style="width: 200px; padding-left: 50px;"><option value="99">面議</option> <option value="1">一個月租金</option> <option value="2" selected="selected">二個月租金</option> <option value="3">三個月租金</option> <option value="98">其他</option></select>
@@ -382,8 +408,8 @@ const delContactPerson = (index) => {
                 <label for="">屋況說明	</label>
                 <div>
                     <div class="input-group">
-                        <textarea name="" id="" rows="10" placeholder=""></textarea>
-                        <textarea name="" id="" rows="10" placeholder=""></textarea>
+                        <textarea name="" id="" rows="10" placeholder="請填寫屋況說明&#13;房屋情況：&#13;高層南向，全新裝修，新冷氣，環境清幽寧靜&#13;&#13;屋苑環境：&#13;一落樓大型商場，電影院，溜冰場，娛樂設施，會所等設施&#13;&#13;周邊設施：&#13;周邊港鐵站，巴士站，購物"></textarea>
+                        <textarea name="" id="" rows="10" placeholder="Condition description:&#13;&#13;Estate Facilities:&#13;&#13;Surrounding Facilities:"></textarea>
                     </div>
                 </div>
             </div>
@@ -395,7 +421,7 @@ const delContactPerson = (index) => {
                     </div>
                     <div class="text-info px-1">
                         相片：支持JPG、GIF、PNG格式，限定每張房屋相片最大不能超過2MB，最多可以上傳15張相片，默認第一張為封面。
-                        不可上傳未經他人授權的相片，以及帶有非852的鏈接、網站、部落格鏈接。如：其他網站水印、網站名字、網址、指引性網址等。
+                        不可上傳未經他人授權的相片，以及帶有非Nova852的鏈接、網站、部落格鏈接。如：其他網站水印、網站名字、網址、指引性網址等。
                     </div>
                 </div>
             </div> 

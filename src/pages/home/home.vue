@@ -178,15 +178,33 @@ const houseQAHandler = (key) =>{
                 <div>
                     <select name="" id="" v-if="tabIndex==1">
                         <option value="">選擇狀態</option>
+                        <option value="">狀態不限</option>
+                        <option value="">未開啟</option>
+                        <option value="">已過期</option>
+                        <option value="">已成交</option>
                     </select>
                     <select name="" id="">
                         <option value="">物業用途</option>
+                        <option value="">住宅</option>
+                        <option value="">寫字樓</option>
+                        <option value="">工廠大廈</option>
+                        <option value="">商舖</option>
+                        <option value="">車位</option>
+                        <option value="">土地</option>
                     </select>
                     <select name="" id="">
                         <option value="">選擇屋苑</option>
+                        <option value="">汝州街123號</option>
                     </select>
                     <select name="" id="">
                         <option value="">選擇間隔</option>
+                        <option value="">間隔不限</option>
+                        <option value="">1房</option>
+                        <option value="">2房</option>
+                        <option value="">3房</option>
+                        <option value="">4房</option>
+                        <option value="">5房及以上</option>
+                        <option value="">開放式</option>
                     </select>
                     <div>
                         <input type="text">

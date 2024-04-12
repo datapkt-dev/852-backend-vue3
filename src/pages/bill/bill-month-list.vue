@@ -263,6 +263,14 @@ const WaterBill = 10;
           過濾
           <div>
             <div>
+              <label for="">狀態</label>
+              <select name="" id="">
+                <option value="">--select--</option>
+                <option value="">未完成</option>
+                <option value="">收款完成</option>
+              </select>
+            </div>
+            <!-- <div>
               <label>地址</label>
               <select v-model="address">
                 <option value="">--請選擇--</option>
@@ -287,7 +295,7 @@ const WaterBill = 10;
                   {{ key.label }}
                 </option>
               </select>
-            </div>
+            </div> -->
             <!-- <div>
               <label>國籍</label>
               <select v-model="country">
@@ -301,7 +309,7 @@ const WaterBill = 10;
                 </option>
               </select>
             </div> -->
-            <!-- <div>
+            <div>
               <label>租金</label>
               <div class="flex">
                 <input
@@ -319,7 +327,7 @@ const WaterBill = 10;
                   v-model="rentEnd"
                 />
               </div>
-            </div> -->
+            </div>
             <hr />
           </div>
         </div>

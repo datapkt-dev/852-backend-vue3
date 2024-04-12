@@ -28,38 +28,47 @@ const addressOptions = [
 const categoryOptions = [
   {
     value: "0",
-    label: "套房",
+    label: "住宅",
   },
   {
     value: "1",
-    label: "雅房",
+    label: "寫字樓",
   },
   {
     value: "2",
-    label: "整層住家",
+    label: "工廠大廈",
   },
   {
     value: "3",
-    label: "店面",
+    label: "商舖",
   },
+  {
+    value: "4",
+    label: "車位",
+  },
+  {
+    value: "5",
+    label: "土地",
+  },
+
 ];
 const countryOptions = [
-  {
-    value: "TW",
-    label: "台灣",
-  },
-  {
-    value: "JP",
-    label: "日本",
-  },
-  {
-    value: "US",
-    label: "美國",
-  },
-  {
-    value: "VN",
-    label: "越南",
-  },
+  // {
+  //   value: "TW",
+  //   label: "台灣",
+  // },
+  // {
+  //   value: "JP",
+  //   label: "日本",
+  // },
+  // {
+  //   value: "US",
+  //   label: "美國",
+  // },
+  // {
+  //   value: "VN",
+  //   label: "越南",
+  // },
 ];
 
 const getAddressLabel = () => {
@@ -110,7 +119,7 @@ const imgUserUrl = (url) => {
 
 const tableHeaders = ref([
   { text: "#", value: "id", width: 30 },
-  { text: "合約名稱", value: "name" },
+  { text: "合約名稱", value: "contractName" },
   { text: "", value: "photo", width: 60 },
   { text: "承租人", value: "name", width: 200 },
   // { text: "綁定平台", value: "platform", width: 120 },
@@ -129,7 +138,7 @@ const tableItems = ref([
     name: "陳小華",
     platform: "line",
     phone: "0912345678",
-    lease: ["套房", "店面"],
+    lease: ["住宅", "寫字樓"],
     rent: "10000",
     country: "TW",
     startDate: "2021-01-01",
@@ -143,7 +152,7 @@ const tableItems = ref([
     name: "林月嬌",
     platform: "line",
     phone: "0912345678",
-    lease: ["套房"],
+    lease: ["住宅"],
     rent: "10000",
     country: "TW",
     startDate: "2021-01-01",
@@ -266,7 +275,7 @@ contractStartDate.value =  new Date().toISOString().substr(0, 10);
           <span class="material-icons-outlined"> filter_alt </span>
           過濾
           <div>
-            <div>
+            <!-- <div>
               <label>地址</label>
               <select v-model="address">
                 <option value="">--請選擇--</option>
@@ -278,7 +287,7 @@ contractStartDate.value =  new Date().toISOString().substr(0, 10);
                   {{ key.label }}
                 </option>
               </select>
-            </div>
+            </div> -->
             <div>
               <label>承租物件</label>
               <select v-model="category">
@@ -431,7 +440,7 @@ contractStartDate.value =  new Date().toISOString().substr(0, 10);
       <div class="window-box-content">
         <div class="form-div">
           <div>
-            <label for=""><small class="text-danger">*</small> 立約人</label>
+            <label for=""><small class="text-danger"></small> 立約人</label>
             <div>
               <div class="input-group">
                 <!-- <div class="text-input"> -->
@@ -441,7 +450,7 @@ contractStartDate.value =  new Date().toISOString().substr(0, 10);
             </div>
           </div>
           <div>
-            <label for=""><small class="text-danger">*</small> 承租人</label>
+            <label for=""><small class="text-danger"></small> 承租人</label>
             <div>
               <div class="input-group">
                 <!-- <div class="text-input"> -->
@@ -451,76 +460,55 @@ contractStartDate.value =  new Date().toISOString().substr(0, 10);
             </div>
           </div>
           <div>
-            <label for=""><small class="text-danger">*</small> 租金</label>
+            <label for=""><small class="text-danger"></small> 身分證字號</label>
             <div>
               <div class="input-group">
-                <input type="number" placeholder="請輸入租金" />
+                <input type="text" placeholder=""/>
               </div>
             </div>
           </div>
           <div>
-            <label for=""><small class="text-danger">*</small> 電度</label>
+            <label for=""><small class="text-danger"></small> 電話</label>
             <div>
               <div class="input-group">
-                <!-- <div class="text-input"> -->
-                <input type="text" placeholder="" />
-                <!-- </div> -->
+                <input type="text" placeholder=""/>
               </div>
             </div>
           </div>
           <div>
-            <label for=""><small class="text-danger">*</small> 立約日期</label>
+            <label for=""><small class="text-danger"></small> 性別</label>
             <div>
               <div class="input-group">
-                <input type="date" v-model="contractStartDate" />
-              </div>
-            </div>
-          </div>
-          <div>
-            <label for=""><small class="text-danger">*</small> 到期日</label>
-            <div>
-              <div class="input-group">
-                <input type="date"  />
-              </div>
-            </div>
-          </div>
-          <!-- <div>
-            <label for=""><small class="text-danger">*</small> 國籍</label>
-            <div>
-              <div class="input-group">
-                <select>
-                  <option value="">--請選擇--</option>
-                  <option value="TW">台灣</option>
-                  <option value="JP">日本</option>
-                  <option value="US">美國</option>
-                  <option value="VN">越南</option>
+                <select name="" id="">
+                  <option value="">--Select--</option>
+                  <option value="">男</option>
+                  <option value="">女</option>
                 </select>
               </div>
             </div>
-          </div> -->
-          <!-- <div>
-            <label for=""><small class="text-danger">*</small> 電話</label>
+          </div>
+          <div>
+            <label for=""><small class="text-danger"></small> 出生年月日</label>
             <div>
               <div class="input-group">
-                <input type="text" placeholder="請輸入電話" />
+                <input type="date" placeholder=""/>
               </div>
             </div>
-          </div> -->
-          <!-- <div>
-            <label for=""><small class="text-danger">*</small> 綁定平台</label>
+          </div>
+          <div>
+            <label for=""><small class="text-danger"></small> 物件</label>
             <div>
               <div class="input-group">
-                <select>
-                  <option value="">--請選擇--</option>
-                  <option value="line">Line</option>
-                  <option value="facebook">Facebook</option>
-                  <option value="google">Google</option>
+                <select name="" id="">
+                  <option value="">--Select--</option>
+                  <option value="">A01</option>
+                  <option value="">A02</option>
                 </select>
               </div>
             </div>
-          </div> -->
+          </div>
           <div>
-            <label for=""><small class="text-danger">*</small> 租賃物件</label>
+            <label for=""><small class="text-danger"></small> 租賃物件</label>
             <div>
               <div class="checkbox-group">
                   <label class="checkbox-label">
@@ -546,6 +534,110 @@ contractStartDate.value =  new Date().toISOString().substr(0, 10);
               </div>
             </div>
           </div>
+          <div>
+            <label for=""><small class="text-danger"></small> 租金</label>
+            <div>
+              <div class="input-group">
+                <input type="number" placeholder="請輸入租金" />
+              </div>
+            </div>
+          </div>
+          <div>
+            <label for=""><small class="text-danger"></small> 押金</label>
+            <div>
+              <div class="input-group">
+                <input type="number" placeholder="請輸入押金" />
+              </div>
+            </div>
+          </div>
+          <div>
+            <label for=""><small class="text-danger"></small> 電度</label>
+            <div>
+              <div class="input-group">
+                <!-- <div class="text-input"> -->
+                <input type="text" placeholder="" />
+                <!-- </div> -->
+              </div>
+            </div>
+          </div>
+          <div>
+            <label for=""><small class="text-danger"></small> 水度</label>
+            <div>
+              <div class="input-group">
+                <!-- <div class="text-input"> -->
+                <input type="text" placeholder="" />
+                <!-- </div> -->
+              </div>
+            </div>
+          </div>
+          <div>
+            <label for=""><small class="text-danger"></small> 立約日期</label>
+            <div>
+              <div class="input-group">
+                <input type="date" v-model="contractStartDate" />
+              </div>
+            </div>
+          </div>
+          <div>
+            <label for=""><small class="text-danger"></small> 起始日</label>
+            <div>
+              <div class="input-group">
+                <input type="date"  />
+              </div>
+            </div>
+          </div>
+          <div>
+            <label for=""><small class="text-danger"></small> 到期日</label>
+            <div>
+              <div class="input-group">
+                <input type="date"  />
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <label for=""><small class="text-danger"></small> 付款日</label>
+            <div>
+              <div class="input-group">
+                <input type="date"  />
+              </div>
+            </div>
+          </div>
+          <!-- <div>
+            <label for=""><small class="text-danger"></small> 國籍</label>
+            <div>
+              <div class="input-group">
+                <select>
+                  <option value="">--請選擇--</option>
+                  <option value="TW">台灣</option>
+                  <option value="JP">日本</option>
+                  <option value="US">美國</option>
+                  <option value="VN">越南</option>
+                </select>
+              </div>
+            </div>
+          </div> -->
+          <!-- <div>
+            <label for=""><small class="text-danger"></small> 電話</label>
+            <div>
+              <div class="input-group">
+                <input type="text" placeholder="請輸入電話" />
+              </div>
+            </div>
+          </div> -->
+          <!-- <div>
+            <label for=""><small class="text-danger"></small> 綁定平台</label>
+            <div>
+              <div class="input-group">
+                <select>
+                  <option value="">--請選擇--</option>
+                  <option value="line">Line</option>
+                  <option value="facebook">Facebook</option>
+                  <option value="google">Google</option>
+                </select>
+              </div>
+            </div>
+          </div> -->
           <!-- <div>
             <label for="">照片</label>
             <div>
@@ -558,10 +650,9 @@ contractStartDate.value =  new Date().toISOString().substr(0, 10);
         </div>
       </div>
 
-      <!-- <div class="window-box-btns">
-        <button class="btn btn-primary">確定</button>
-        <button class="btn btn-outline-primary">取消</button>
-      </div> -->
+      <div class="window-box-btns">
+        <button class="btn btn-primary">新增</button>
+      </div>
     </div>
   </div>
   <div
@@ -597,12 +688,12 @@ contractStartDate.value =  new Date().toISOString().substr(0, 10);
               </div>
             </div>
           </div>
-          <div style="justify-content: flex-end;">
-            <button class="btn btn-primary ">
-              發送
-            </button>
-          </div>
         </div>
+      </div>
+      <div class="window-box-btns">
+        <button class="btn btn-primary ">
+          發送
+        </button>
       </div>
     </div>
   </div>

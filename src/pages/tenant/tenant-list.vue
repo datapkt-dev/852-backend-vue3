@@ -16,50 +16,58 @@ const country = ref("");
 const rentStart = ref(null);
 const rentEnd = ref(null);
 const addressOptions = [
-  {
-    value: "0",
-    label: "台北市",
-  },
-  {
-    value: "1",
-    label: "新北市",
-  },
+  // {
+  //   value: "0",
+  //   label: "台北市",
+  // },
+  // {
+  //   value: "1",
+  //   label: "新北市",
+  // },
 ];
 const categoryOptions = [
   {
     value: "0",
-    label: "套房",
+    label: "住宅",
   },
   {
     value: "1",
-    label: "雅房",
+    label: "寫字樓",
   },
   {
     value: "2",
-    label: "整層住家",
+    label: "工廠大廈",
   },
   {
     value: "3",
-    label: "店面",
+    label: "商舖",
+  },
+  {
+    value: "4",
+    label: "車位",
+  },
+  {
+    value: "5",
+    label: "土地",
   },
 ];
 const countryOptions = [
-  {
-    value: "TW",
-    label: "台灣",
-  },
-  {
-    value: "JP",
-    label: "日本",
-  },
-  {
-    value: "US",
-    label: "美國",
-  },
-  {
-    value: "VN",
-    label: "越南",
-  },
+  // {
+  //   value: "TW",
+  //   label: "台灣",
+  // },
+  // {
+  //   value: "JP",
+  //   label: "日本",
+  // },
+  // {
+  //   value: "US",
+  //   label: "美國",
+  // },
+  // {
+  //   value: "VN",
+  //   label: "越南",
+  // },
 ];
 
 const getAddressLabel = () => {
@@ -126,7 +134,7 @@ const tableItems = ref([
     name: "陳小華",
     platform: "line",
     phone: "0912345678",
-    lease: ["套房", "店面"],
+    lease: ["住宅", "寫字樓"],
     rent: "10000",
     country: "TW",
     startDate: "2021-01-01",
@@ -140,7 +148,7 @@ const tableItems = ref([
     name: "林月嬌",
     platform: "line",
     phone: "0912345678",
-    lease: ["套房"],
+    lease: ["住宅"],
     rent: "10000",
     country: "TW",
     startDate: "2021-01-01",
@@ -254,7 +262,7 @@ const openSendEmail = (row) => {
           <span class="material-icons-outlined"> filter_alt </span>
           過濾
           <div>
-            <div>
+            <!-- <div>
               <label>地址</label>
               <select v-model="address">
                 <option value="">--請選擇--</option>
@@ -266,7 +274,7 @@ const openSendEmail = (row) => {
                   {{ key.label }}
                 </option>
               </select>
-            </div>
+            </div> -->
             <div>
               <label>承租物件</label>
               <select v-model="category">
@@ -280,7 +288,7 @@ const openSendEmail = (row) => {
                 </option>
               </select>
             </div>
-            <div>
+            <!-- <div>
               <label>國籍</label>
               <select v-model="country">
                 <option value="">--請選擇類型--</option>
@@ -292,7 +300,7 @@ const openSendEmail = (row) => {
                   {{ key.label }}
                 </option>
               </select>
-            </div>
+            </div> -->
             <!-- <div>
               <label>租金</label>
               <div class="flex">
@@ -395,7 +403,7 @@ const openSendEmail = (row) => {
         <span class="material-icons-outlined"> close </span>
       </div>
       <div class="window-box-title" v-if="addEditTenantWindowType==='add'">新增房客</div>
-      <div class="window-box-title" v-if="addEditTenantWindowType==='edit'">修改房客</div>
+      <div class="window-box-title" v-if="addEditTenantWindowType==='edit'">查看房客</div>
       <div class="window-box-content">
         <div class="form-div">
           <div>
@@ -403,12 +411,12 @@ const openSendEmail = (row) => {
             <div>
               <div class="input-group">
                 <!-- <div class="text-input"> -->
-                <input type="text" placeholder="" />
+                <input type="text" placeholder=""  disabled/>
                 <!-- </div> -->
               </div>
             </div>
           </div>
-          <div>
+          <!-- <div>
             <label for=""><small class="text-danger">*</small> 承租日期</label>
             <div>
               <div class="input-group">
@@ -417,8 +425,8 @@ const openSendEmail = (row) => {
                 <input type="date" />
               </div>
             </div>
-          </div>
-          <div>
+          </div> -->
+          <!-- <div>
             <label for=""><small class="text-danger">*</small> 國籍</label>
             <div>
               <div class="input-group">
@@ -431,16 +439,16 @@ const openSendEmail = (row) => {
                 </select>
               </div>
             </div>
-          </div>
+          </div> -->
           <div>
             <label for=""><small class="text-danger">*</small> 電話</label>
             <div>
               <div class="input-group">
-                <input type="text" placeholder="請輸入電話" />
+                <input type="text" placeholder="請輸入電話" disabled/>
               </div>
             </div>
           </div>
-          <div>
+          <!-- <div>
             <label for=""><small class="text-danger">*</small> 綁定平台</label>
             <div>
               <div class="input-group">
@@ -452,16 +460,16 @@ const openSendEmail = (row) => {
                 </select>
               </div>
             </div>
-          </div>
-          <div>
+          </div> -->
+          <!-- <div>
             <label for=""><small class="text-danger">*</small> 租金</label>
             <div>
               <div class="input-group">
                 <input type="number" placeholder="請輸入租金" />
               </div>
             </div>
-          </div>
-          <div>
+          </div> -->
+          <!-- <div>
             <label for=""><small class="text-danger">*</small> 租賃物件</label>
             <div>
               <div class="checkbox-group">
@@ -487,15 +495,15 @@ const openSendEmail = (row) => {
                   </label>
               </div>
             </div>
-          </div>
-          <div>
+          </div> -->
+          <!-- <div>
             <label for="">照片</label>
             <div>
               <div class="input-group">
-                <input type="file" />
+                <input type="file" disabled/>
               </div>
             </div>
-          </div>
+          </div> -->
 
         </div>
       </div>
@@ -539,12 +547,12 @@ const openSendEmail = (row) => {
               </div>
             </div>
           </div>
-          <div style="justify-content: flex-end;">
-            <button class="btn btn-primary ">
-              發送
-            </button>
-          </div>
         </div>
+      </div>
+      <div class="window-box-btns">
+        <button class="btn btn-primary ">
+          發送
+        </button>
       </div>
     </div>
   </div>

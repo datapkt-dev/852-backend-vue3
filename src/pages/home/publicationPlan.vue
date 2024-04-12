@@ -31,14 +31,14 @@ const isplane = ref(true);
             是否需要刊登廣告
         </div>
         <div class="plan-div flex" style="justify-content: start;">
-        <label class="radiobox" for="radio-isplane-1">
-            <input type="radio" name="radio-isplane" id="radio-isplane-1" value="false" @click="isplane=false" :checked="isplane==false">
-            <div></div> 不刊登
-        </label> 
-        <label class="radiobox" for="radio-isplane-2">
-            <input type="radio" name="radio-isplane" id="radio-isplane-2"  value="true" @click="isplane=true" :checked="isplane">
-            <div></div> 選擇刊登方案
-        </label> 
+            <label class="radiobox" for="radio-isplane-1">
+                <input type="radio" name="radio-isplane" id="radio-isplane-1" value="false" @click="isplane=false" :checked="isplane==false">
+                <div></div> 不刊登
+            </label> 
+            <label class="radiobox" for="radio-isplane-2">
+                <input type="radio" name="radio-isplane" id="radio-isplane-2"  value="true" @click="isplane=true" :checked="isplane">
+                <div></div> 選擇刊登方案
+            </label> 
         </div>
     </div>
 

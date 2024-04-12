@@ -122,7 +122,7 @@ const tableItems = ref([
     options: ["view"],
     name: "王小明",
     total: 120000,
-    lease: ["套房租金", "水費", "電費"],
+    lease: ["住宅租金", "水費", "電費"],
     status: "Pending",
   },
   {
@@ -137,7 +137,7 @@ const tableItems = ref([
     id: 3,
     options: ["view"],
     name: "林月嬌",
-    lease: ["套房租金", "水費", "電費"],
+    lease: ["住宅租金", "水費", "電費"],
     total: 130000,
     status: "Paid",
   },
@@ -253,6 +253,15 @@ const WaterBill = 10;
           <span class="material-icons-outlined"> filter_alt </span>
           過濾
           <div>
+            <div>
+              <label for="">狀態</label>
+              <select name="" id="">
+                <option value="">--select--</option>
+                <option value="">待收款</option>
+                <option value="">逾期</option>
+                <option value="">已繳款</option>
+              </select>
+            </div>
             <!-- <div>
               <label>地址</label>
               <select v-model="address">
@@ -266,7 +275,7 @@ const WaterBill = 10;
                 </option>
               </select>
             </div> -->
-            <div>
+            <!-- <div>
               <label>承租物件</label>
               <select v-model="category">
                 <option value="">--請選擇類型--</option>
@@ -278,7 +287,7 @@ const WaterBill = 10;
                   {{ key.label }}
                 </option>
               </select>
-            </div>
+            </div> -->
             <!-- <div>
               <label>國籍</label>
               <select v-model="country">
@@ -398,7 +407,7 @@ const WaterBill = 10;
       <div class="window-box-content">
         <div class="form-div">
           <div>
-            <label for="">套房租金</label>
+            <label for="">租金</label>
             <div>
               <div class="input-group">
                 10000

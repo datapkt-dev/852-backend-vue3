@@ -62,6 +62,8 @@ const VerificationCodeSendHandler = () =>{
     commonStore.setPhoneVerify(true)
 }
 
+const identity = ref(0)
+
 </script>
 
 <template>
@@ -74,11 +76,11 @@ const VerificationCodeSendHandler = () =>{
             <div>
                 <div class="form-div">
                     <div>
-                        <label for=""><small class="text-danger">*</small> 審核狀態</label>
+                        <label for="">審核狀態</label>
                         <div>
-                            <div v-if="commonStore.accountVerify==0">未送審</div>
-                            <div v-if="commonStore.accountVerify==1">審核中</div>
-                            <div v-if="commonStore.accountVerify==2">已審核</div>
+                            <div v-if="commonStore.accountVerify==0" class="text-danger">未送審</div>
+                            <div v-if="commonStore.accountVerify==1" class="text-warning">審核中</div>
+                            <div v-if="commonStore.accountVerify==2" class="text-success">已審核</div>
                         </div>
                     </div>
                     <div>
@@ -90,7 +92,7 @@ const VerificationCodeSendHandler = () =>{
                         </div>
                     </div>
                     <div>
-                        <label for=""><small class="text-danger">*</small> 電子郵件</label>
+                        <label for="">電子郵件</label>
                         <div>
                             <div class="input-group">
                                 <input type="text" v-model="googleUserData.email" readonly />
@@ -98,13 +100,80 @@ const VerificationCodeSendHandler = () =>{
                         </div>
                     </div>
                     <div>
-                        <label for=""><small class="text-danger">*</small> 姓名</label>
+                        <label for=""><small class="text-danger">*</small> 身分</label>
+                        <div>
+                            <div class="input-group">
+                                
+                                <label class="radiobox" for="radio-identity-1">
+                                    <input type="radio" name="radio-identity" id="radio-identity-1" value="0" @click="identity=0" :checked="identity==0">
+                                    <div></div> 房東
+                                </label> 
+                                <label class="radiobox" for="radio-identity-2">
+                                    <input type="radio" name="radio-identity" id="radio-identity-2"  value="1" @click="identity=1" :checked="identity==1">
+                                    <div></div> 代理
+                                </label> 
+                            </div>
+                        </div>
+                    </div>
+
+                    <div v-if="String(identity).match(/1/)">
+                        <label for=""><small class="text-danger">*</small> 物業編號</label>
+                        <div>
+                            <div class="input-group">
+                                <input type="text" readonly />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div v-if="String(identity).match(/0|1/)">
+                        <label for=""><small class="text-danger">*</small> 真實姓名</label>
                         <div>
                             <div class="input-group">
                                 <input type="text" v-model="googleUserData.name" readonly />
                             </div>
                         </div>
                     </div>
+                    <div v-if="String(identity).match(/0|1/)">
+                        <label for=""><small class="text-danger">*</small> 身分證</label>
+                        <div>
+                            <div class="input-group">
+                                <input type="text" readonly />
+                            </div>
+                        </div>
+                    </div>
+                    <div v-if="String(identity).match(/1/)">
+                        <label for=""><small class="text-danger">*</small> 公司/單位</label>
+                        <div>
+                            <div class="input-group">
+                                <input type="text" readonly />
+                            </div>
+                        </div>
+                    </div>
+                    <div v-if="String(identity).match(/0/)">
+                        <label for=""><small class="text-danger">*</small> 連絡電話<br>(顯示租屋)</label>
+                        <div>
+                            <div class="input-group">
+                                <input type="text" readonly />
+                            </div>
+                        </div>
+                    </div>
+                    <div v-if="String(identity).match(/0|1/)">
+                        <label for=""><small class="text-danger">*</small> whatsapp</label>
+                        <div>
+                            <div class="input-group">
+                                <input type="text" readonly />
+                            </div>
+                        </div>
+                    </div>
+                    <div v-if="String(identity).match(/0|1/)">
+                        <label for=""><small class="text-danger">*</small> 地址</label>
+                        <div>
+                            <div class="input-group">
+                                <input type="text" readonly />
+                            </div>
+                        </div>
+                    </div>
+
                     <div>
                         <label for=""><small class="text-danger">*</small> 手機</label>
                         <div>
@@ -162,6 +231,29 @@ const VerificationCodeSendHandler = () =>{
             margin: 0 10px;
             box-shadow: 0 0 5px rgba(0,0,0,.1);
             width: 100%;
+        }
+    }
+
+    
+    .radiobox{
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin-right: 20px;
+        >input{
+            display: none;
+            &:checked + div{
+                background-color: var(--bs-primary);
+                color: #fff;
+            }
+        }
+        >div{
+            width: 20px;
+            height: 20px;
+            border: 1px solid var(--bs-gray);
+            border-radius: 50%;
+            cursor: pointer;
+            margin-right: 10px;
         }
     }
 
