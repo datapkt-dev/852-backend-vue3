@@ -40,7 +40,7 @@ const callback = (response) => {
     <div class="login-div">
       <div class="card-body">
         <div class="logo">
-          Logo
+          <img src="@/assets/images/logo.svg" alt="">
         </div>
         <!-- <div class="tab-div">
           <div :class="type==0?'active':''" @click="type=0">Login</div>
@@ -159,6 +159,9 @@ const callback = (response) => {
         font-weight: 600;
         text-align: center;
         margin: 40px 0;
+        >img{
+          width: 250px;
+        }
       }
       .tab-div{
         display: flex;

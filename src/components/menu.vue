@@ -25,6 +25,12 @@ const props = defineProps({
 const route = useRoute();
 const router = useRouter();
 
+const googleUserData = ref(null);
+
+if(localStorage.getItem('user')){
+    googleUserData.value = JSON.parse(localStorage.getItem('user'));
+}
+
 // console.log(route.path);
 
 const isMin = ref(props.isMinMenu)
@@ -170,7 +176,10 @@ watch(() =>  isShowMobile.value, (val) => {
       }
     ]" @mouseover="isHover=true" @mouseleave="isHover=false">
     <div class="top">
-      <div class="logo" v-if="!isFullMenu()">{{t('Menu.web-title')}}</div>
+      <div class="logo" v-if="!isFullMenu()">
+        <img src="@/assets/images/logo.svg" alt="">
+        <!-- {{t('Menu.web-title')}} -->
+      </div>
       <div class="menu-btn" @click="isMin=true;" v-if="isMin==false">
         <span class="material-icons-outlined">
         first_page
@@ -208,8 +217,8 @@ watch(() =>  isShowMobile.value, (val) => {
           <img src="@/assets/images/user.webp" alt="">
         </div>
         <div v-if="!isFullMenu()">
-          <div class="user-name">xxxx</div>
-          <div class="user-surname">xxxx</div>
+          <div class="user-name">{{ googleUserData.name }}</div>
+          <div class="user-surname"> {{  googleUserData.email }}</div>
         </div>
       </div>
       <!-- <div class="menu-item">
@@ -270,6 +279,9 @@ watch(() =>  isShowMobile.value, (val) => {
       font-size: 20px;
       font-weight: 700;
       color: var(--bs-light);
+      >img{
+        width: 100px;
+      }
     }
     .menu-btn{
       cursor: pointer;

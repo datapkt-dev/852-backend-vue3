@@ -114,6 +114,7 @@ const tableHeaders = ref([
   { text: "該期金額", value: "total" },
   { text: "帳務類型", value: "lease" },
   { text: "狀態", value: "status" },
+  { text: "電話", value: "phone" },
   { text: "", value: "options", width: 120 },
 ]);
 const tableItems = ref([
@@ -124,6 +125,7 @@ const tableItems = ref([
     total: 120000,
     lease: ["住宅租金", "水費", "電費"],
     status: "Pending",
+    phone: "0123456789",
   },
   {
     id: 2,
@@ -132,6 +134,7 @@ const tableItems = ref([
     lease: ["車位租金"],
     total: 150000,
     status: "Overdue",
+    phone: "0123456789",
   },
   {
     id: 3,
@@ -140,6 +143,7 @@ const tableItems = ref([
     lease: ["住宅租金", "水費", "電費"],
     total: 130000,
     status: "Paid",
+    phone: "0123456789",
   },
 ]);
 const serverItemsLength = ref(30);
@@ -342,10 +346,10 @@ const WaterBill = 10;
             <span> List </span>
           </div>
           <div>
-            <button class="btn btn-info">
+            <!-- <button class="btn btn-info">
               <span class="material-icons-outlined"> cloud_download </span>
               Export
-            </button>
+            </button> -->
           </div>
         </div>
         <div class="table-div-content">
@@ -376,9 +380,18 @@ const WaterBill = 10;
               </button>
             </template>
             <template #item-status="row">
-                <span v-if="row.status == 'Pending'">待收款</span>
+
+                
+              <select :value="row.status">
+                <option value="">--select--</option>
+                <option value="Pending">待收款</option>
+                <option value="Overdue">逾期</option>
+                <option value="Paid">已繳款</option>
+              </select>
+
+                <!-- <span v-if="row.status == 'Pending'">待收款</span>
                 <span v-if="row.status == 'Paid'">已繳款</span>
-                <span v-if="row.status == 'Overdue'">逾期</span>
+                <span v-if="row.status == 'Overdue'">逾期</span> -->
             </template>
             <template #item-lease="row">
               <div>
@@ -437,6 +450,27 @@ const WaterBill = 10;
             <div>
               <div class="input-group">
                 {{ 10000 + ElectricityDegree * ElectricityBill + WaterDegree * WaterBill }}
+              </div>
+            </div>
+          </div>
+          <div>
+            <label for="">狀態</label>
+            <div>
+              <div class="input-group">
+                <select>
+                  <option value="">--select--</option>
+                  <option value="">待收款</option>
+                  <option value="">逾期</option>
+                  <option value="">已繳款</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div>
+            <label for=""> 電話</label>
+            <div>
+              <div class="input-group">
+                0123456789
               </div>
             </div>
           </div>

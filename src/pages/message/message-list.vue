@@ -109,12 +109,12 @@ watch(serverOptions, (value) => {
                     </span>
                 </div>
                 <div>
-                    <button class="btn btn-info">
+                    <!-- <button class="btn btn-info">
                         <span class="material-icons-outlined">
                         cloud_download
                         </span>
                         Export
-                    </button>
+                    </button> -->
                 </div>
             </div>
             <div class="table-div-content">

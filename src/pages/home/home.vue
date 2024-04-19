@@ -31,7 +31,9 @@ const houseQAHandler = (key) =>{
     console.log(key);
 }
 
-
+const getSampleImg = (key) => {
+    return new URL(`/src/assets/images/sample/demo${key}.jpg`, import.meta.url).href
+}
 
 </script>
 
@@ -219,7 +221,7 @@ const houseQAHandler = (key) =>{
             <div class="sysid-div">房源編號：R1132552</div>
             <div>
                 <div class="house-img">
-                    <img src="" alt="">
+                    <img :src="getSampleImg(key)" alt="">
                 </div>
                 <div>
                     <div>
@@ -255,7 +257,7 @@ const houseQAHandler = (key) =>{
             <div class="sysid-div">房源編號：R1132552</div>
             <div>
                 <div class="house-img">
-                    <img src="" alt="">
+                    <img :src="getSampleImg(key)" alt="">
                 </div>
                 <div>
                     <div>
@@ -507,11 +509,15 @@ const houseQAHandler = (key) =>{
                 }
                 >div{
                     &.house-img{
+                        position: relative;
                         width: 20%;
                         min-height: 120px;
                         background: #999;
                         img{
                             width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            object-position: center center;
                         }
                     }
                     &:nth-child(2){

@@ -125,6 +125,15 @@ const identity = ref(0)
                         </div>
                     </div>
 
+                    <div v-if="String(identity).match(/1/)">
+                        <label for=""><small class="text-danger">*</small> 牌照</label>
+                        <div>
+                            <div class="input-group">
+                                <input type="text" readonly />
+                            </div>
+                        </div>
+                    </div>
+
                     <div v-if="String(identity).match(/0|1/)">
                         <label for=""><small class="text-danger">*</small> 真實姓名</label>
                         <div>
@@ -138,6 +147,14 @@ const identity = ref(0)
                         <div>
                             <div class="input-group">
                                 <input type="text" readonly />
+                            </div>
+                        </div>
+                    </div>
+                    <div v-if="String(identity).match(/0|1/)">
+                        <label for=""><small class="text-danger">*</small> 上傳身分證照片</label>
+                        <div>
+                            <div class="input-group">
+                                <input type="file" readonly />
                             </div>
                         </div>
                     </div>

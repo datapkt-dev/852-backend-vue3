@@ -134,7 +134,7 @@ const tableItems = ref([
     name: "陳小華",
     platform: "line",
     phone: "0912345678",
-    lease: ["住宅", "寫字樓"],
+    lease: ["尖沙咀A01", "中環大樓C層"],
     rent: "10000",
     country: "TW",
     startDate: "2021-01-01",
@@ -148,7 +148,7 @@ const tableItems = ref([
     name: "林月嬌",
     platform: "line",
     phone: "0912345678",
-    lease: ["住宅"],
+    lease: ["尖沙咀A01"],
     rent: "10000",
     country: "TW",
     startDate: "2021-01-01",
@@ -342,10 +342,10 @@ const openSendEmail = (row) => {
             <span> List </span>
           </div>
           <div>
-            <button class="btn btn-info">
+            <!-- <button class="btn btn-info">
               <span class="material-icons-outlined"> cloud_download </span>
               Export
-            </button>
+            </button> -->
           </div>
         </div>
         <div class="table-div-content">
@@ -411,7 +411,7 @@ const openSendEmail = (row) => {
             <div>
               <div class="input-group">
                 <!-- <div class="text-input"> -->
-                <input type="text" placeholder=""  disabled/>
+                <input type="text" placeholder=""  />
                 <!-- </div> -->
               </div>
             </div>
@@ -441,10 +441,38 @@ const openSendEmail = (row) => {
             </div>
           </div> -->
           <div>
+            <label for=""><small class="text-danger"></small> 身分證字號</label>
+            <div>
+              <div class="input-group">
+                <input type="text" placeholder="" />
+              </div>
+            </div>
+          </div>
+          <div>
             <label for=""><small class="text-danger">*</small> 電話</label>
             <div>
               <div class="input-group">
-                <input type="text" placeholder="請輸入電話" disabled/>
+                <input type="text" placeholder="請輸入電話"/>
+              </div>
+            </div>
+          </div>
+          <div>
+            <label for=""><small class="text-danger"></small> 性別</label>
+            <div>
+              <div class="input-group">
+                <select name="" id="">
+                  <option value="">--Select--</option>
+                  <option value="">男</option>
+                  <option value="">女</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div>
+            <label for=""><small class="text-danger"></small> 出生年月日</label>
+            <div>
+              <div class="input-group">
+                <input type="date" placeholder=""/>
               </div>
             </div>
           </div>

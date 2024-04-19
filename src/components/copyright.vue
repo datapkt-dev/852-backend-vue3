@@ -36,7 +36,7 @@ watch(() =>  props.isShowMobileMenu, (val) => {
     <div class="copyright" :style="getWidthStyle()">
         <div>
             <span>© 2024 </span>
-            <span>Powered by XXXXX</span>
+            <span>Powered by Vorne Technology</span>
         </div>
         <div></div>
     </div>

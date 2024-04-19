@@ -128,17 +128,17 @@ const tableHeaders = ref([
   // { text: "電話", value: "phone" },
   { text: "合約金額", value: "rent" },
   // { text: "信箱", value: "email" },
-  { text: "", value: "options", width: 60 },
+  { text: "", value: "options", width: 130 },
 ]);
 
 const tableItems = ref([
   {
     id: 1,
-    options: ["download"],
+    options: ["download","Upload"],
     name: "陳小華",
     platform: "line",
     phone: "0912345678",
-    lease: ["住宅", "寫字樓"],
+    lease: ["尖沙咀A01", "中環大樓C層"],
     rent: "10000",
     country: "TW",
     startDate: "2021-01-01",
@@ -148,11 +148,11 @@ const tableItems = ref([
   },
   {
     id: 2,
-    options: ["download"],
+    options: ["download","Upload"],
     name: "林月嬌",
     platform: "line",
     phone: "0912345678",
-    lease: ["住宅"],
+    lease: ["尖沙咀A01"],
     rent: "10000",
     country: "TW",
     startDate: "2021-01-01",
@@ -204,15 +204,9 @@ const editTenant = (row) => {
   addEditTenantWindowType.value = "edit";
 };
 
-const isSendEmailWindowOpen = ref(false);
-const sendEmailInfo = ref({
-  email: "",
-
-});
-
-const openSendEmail = (row) => {
-  isSendEmailWindowOpen.value = true;
-  sendEmailInfo.value.email = row.email;
+const isUploadWindowOpen = ref(false);
+const openUploadWindow = (row) => {
+  isUploadWindowOpen.value = true;
 };
 
 const contractUser = ref("");
@@ -355,10 +349,10 @@ contractStartDate.value =  new Date().toISOString().substr(0, 10);
             <span> List </span>
           </div>
           <div>
-            <button class="btn btn-info">
+            <!-- <button class="btn btn-info">
               <span class="material-icons-outlined"> cloud_download </span>
               Export
-            </button>
+            </button> -->
           </div>
         </div>
         <div class="table-div-content">
@@ -402,6 +396,13 @@ contractStartDate.value =  new Date().toISOString().substr(0, 10);
                             </span> -->
                 查看
               </button>
+              <button
+                class="btn btn-outline-primary mr-1"
+                v-if="row.options.includes('Upload')"
+                @click="openUploadWindow(row)"
+              >
+                上傳
+              </button>
               <a href="https://my.ksu.edu.tw/file/web/CHT/DASACLS/2987845b-5fbd-4034-982f-f626b32020f5.pdf" target="_blank">
                 <button
                   class="btn btn-outline-primary"
@@ -417,10 +418,6 @@ contractStartDate.value =  new Date().toISOString().substr(0, 10);
                   {{ item }}
                 </span>
               </div>
-            </template>
-            <template #item-email="row">
-              <button v-if="row.email" class="btn btn-outline-primary" @click="openSendEmail(row)">發送信件</button>
-              <span v-else> - </span>
             </template>
           </EasyDataTable>
         </div>
@@ -464,6 +461,22 @@ contractStartDate.value =  new Date().toISOString().substr(0, 10);
             <div>
               <div class="input-group">
                 <input type="text" placeholder=""/>
+              </div>
+            </div>
+          </div>
+          <div>
+            <label for=""><small class="text-danger"></small> 上傳身分證照片(正面)</label>
+            <div>
+              <div class="input-group">
+                <input type="file" placeholder=""/>
+              </div>
+            </div>
+          </div>
+          <div>
+            <label for=""><small class="text-danger"></small> 上傳身分證照片(反面)</label>
+            <div>
+              <div class="input-group">
+                <input type="file" placeholder=""/>
               </div>
             </div>
           </div>
@@ -657,34 +670,20 @@ contractStartDate.value =  new Date().toISOString().substr(0, 10);
   </div>
   <div
     class="window-box-cover"
-    :class="isSendEmailWindowOpen ? 'active' : ''"
+    :class="isUploadWindowOpen ? 'active' : ''"
   >
     <div class="window-box">
-      <div class="window-box-close" @click="isSendEmailWindowOpen = false">
+      <div class="window-box-close" @click="isUploadWindowOpen = false">
         <span class="material-icons-outlined"> close </span>
       </div>
-      <div class="window-box-title">發送信件</div>
+      <div class="window-box-title">上傳合約</div>
       <div class="window-box-content">
         <div class="form-div">
           <div>
-            <label for=""> Email</label>
-            <div>
-              {{ sendEmailInfo.email }}
-            </div>
-          </div>
-          <div>
-            <label for=""> 主旨</label>
+            <label for="">檔案</label>
             <div>
               <div class="input-group">
-                <input type="text" placeholder="請輸入主旨" />
-              </div>
-            </div>
-          </div>
-          <div>
-            <label for=""> 內容</label>
-            <div>
-              <div class="input-group">
-                <textarea placeholder="請輸入內容" rows="5"></textarea>
+                <input type="file" placeholder="請選擇檔案" />
               </div>
             </div>
           </div>
@@ -692,7 +691,7 @@ contractStartDate.value =  new Date().toISOString().substr(0, 10);
       </div>
       <div class="window-box-btns">
         <button class="btn btn-primary ">
-          發送
+          上傳
         </button>
       </div>
     </div>

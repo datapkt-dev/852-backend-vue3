@@ -64,12 +64,12 @@ watch(() =>  searchInput.value, (val) => {
                 last_page
                 </span>
             </button>
-                <div class="search-div">
+                <!-- <div class="search-div">
                     <span class="material-icons-outlined">
                     search
                     </span>
                     <input type="text" v-model="searchInput" placeholder="Search...">
-                </div>
+                </div> -->
         </div>
         <div>
             <!-- <button class="btn btn-only-icon btn-lg mobile-show">
