@@ -127,7 +127,7 @@ const getSampleImg = (key) => {
             <div>
                 <div>賬戶餘額</div>
                 <div>0</div>
-                <button class="btn btn-primary">
+                <button class="btn btn-primary" @click="router.push('/home/:pageType/pay-the-fee')">
                     購買
                 </button>
                 <!-- <a>上傳收據</a> -->

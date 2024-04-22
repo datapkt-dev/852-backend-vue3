@@ -382,7 +382,7 @@ const WaterBill = 10;
             <template #item-status="row">
 
                 
-              <select :value="row.status">
+              <select :value="row.status" :class="row.status=='Overdue'?'text-danger':''">
                 <option value="">--select--</option>
                 <option value="Pending">待收款</option>
                 <option value="Overdue">逾期</option>

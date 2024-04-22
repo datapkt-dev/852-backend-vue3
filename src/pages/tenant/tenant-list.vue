@@ -476,6 +476,22 @@ const openSendEmail = (row) => {
               </div>
             </div>
           </div>
+          <div>
+            <label for=""><small class="text-danger"></small> 緊急聯絡人姓名</label>
+            <div>
+              <div class="input-group">
+                <input type="text" placeholder=""/>
+              </div>
+            </div>
+          </div>
+          <div>
+            <label for=""><small class="text-danger"></small> 緊急聯絡人電話</label>
+            <div>
+              <div class="input-group">
+                <input type="text" placeholder=""/>
+              </div>
+            </div>
+          </div>
           <!-- <div>
             <label for=""><small class="text-danger">*</small> 綁定平台</label>
             <div>

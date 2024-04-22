@@ -465,7 +465,7 @@ contractStartDate.value =  new Date().toISOString().substr(0, 10);
             </div>
           </div>
           <div>
-            <label for=""><small class="text-danger"></small> 上傳身分證照片(正面)</label>
+            <label for=""><small class="text-danger"></small> 身分證照片(正面)</label>
             <div>
               <div class="input-group">
                 <input type="file" placeholder=""/>
@@ -473,7 +473,7 @@ contractStartDate.value =  new Date().toISOString().substr(0, 10);
             </div>
           </div>
           <div>
-            <label for=""><small class="text-danger"></small> 上傳身分證照片(反面)</label>
+            <label for=""><small class="text-danger"></small> 身分證照片(反面)</label>
             <div>
               <div class="input-group">
                 <input type="file" placeholder=""/>
@@ -613,6 +613,22 @@ contractStartDate.value =  new Date().toISOString().substr(0, 10);
             <div>
               <div class="input-group">
                 <input type="date"  />
+              </div>
+            </div>
+          </div>
+          <div>
+            <label for=""><small class="text-danger"></small> 緊急聯絡人姓名</label>
+            <div>
+              <div class="input-group">
+                <input type="text" placeholder=""/>
+              </div>
+            </div>
+          </div>
+          <div>
+            <label for=""><small class="text-danger"></small> 緊急聯絡人電話</label>
+            <div>
+              <div class="input-group">
+                <input type="text" placeholder=""/>
               </div>
             </div>
           </div>
