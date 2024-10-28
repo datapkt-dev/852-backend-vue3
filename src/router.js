@@ -6,6 +6,7 @@ import Login from '@/pages/login/login.vue'
 import Page404 from '@/pages/error/page404.vue'
 
 import Home from '@/pages/home/home.vue'
+import HouseList from '@/pages/home/HouseList.vue'
 import HouseAddandEdit from '@/pages/home/houseAddandEdit.vue'
 import PublicationPlan from '@/pages/home/publicationPlan.vue'
 import PayTheFee from '@/pages/home/payTheFee.vue'
@@ -35,7 +36,7 @@ const routes = [
   {
     path: '/home',
     name: 'HomePage',
-    component: Home,
+    component: HouseList,
     meta: { 
       title: '主頁'
     } 

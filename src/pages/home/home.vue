@@ -6,8 +6,12 @@ import "@/assets/css/content.scss";
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 
+import { storeToRefs  } from 'pinia';
 import { useCommonStore } from '@/store/commonStore'
+
 const commonStore = useCommonStore()
+const { accountVerify } = storeToRefs(commonStore);
+
 
 const router = useRouter();
 const route = useRoute();
@@ -238,8 +242,8 @@ const getSampleImg = (key) => {
                     <div>2024-03-07 錄入</div>
                     <div>
                         <!-- <button class="btn btn-info">分享</button> -->
-                        <button class="btn btn-info mr-1" @click="houseQAHandler(key)" :title="commonStore.accountVerify!=2?'帳號審核通過即可使用房屋問答':''" :disabled="commonStore.accountVerify!=2">房屋問答</button>
-                        <button class="btn btn-info" @click="key==1?router.push('/home/edit-rent'):router.push('/home/edit-sale')" :title="commonStore.accountVerify!=2?'帳號審核通過即可修改':''" :disabled="commonStore.accountVerify!=2">修改</button>
+                        <button class="btn btn-info mr-1" @click="houseQAHandler(key)" :title="accountVerify!=2?'帳號審核通過即可使用房屋問答':''" :disabled="accountVerify!=2">房屋問答</button>
+                        <button class="btn btn-info" @click="key==1?router.push('/home/edit-rent'):router.push('/home/edit-sale')" :title="accountVerify!=2?'帳號審核通過即可修改':''" :disabled="accountVerify!=2">修改</button>
                         <!-- <button class="btn btn-info">複製</button> -->
                     </div>
                 </div>
@@ -274,14 +278,14 @@ const getSampleImg = (key) => {
                     <div>2024-03-07 錄入</div>
                     <div>
                         <!-- <button class="btn btn-info">分享</button> -->
-                        <button class="btn btn-info mr-1" @click="houseQAHandler(key)" :title="commonStore.accountVerify!=2?'帳號審核通過即可使用房屋問答':''" :disabled="commonStore.accountVerify!=2">房屋問答</button>
-                        <button class="btn btn-info" @click="key==1?router.push('/home/edit-rent'):router.push('/home/edit-sale')" :title="commonStore.accountVerify!=2?'帳號審核通過即可修改':''" :disabled="commonStore.accountVerify!=2">修改</button>
+                        <button class="btn btn-info mr-1" @click="houseQAHandler(key)" :title="accountVerify!=2?'帳號審核通過即可使用房屋問答':''" :disabled="accountVerify!=2">房屋問答</button>
+                        <button class="btn btn-info" @click="key==1?router.push('/home/edit-rent'):router.push('/home/edit-sale')" :title="accountVerify!=2?'帳號審核通過即可修改':''" :disabled="accountVerify!=2">修改</button>
                         <!-- <button class="btn btn-info">複製</button> -->
                     </div>
                 </div>
                 <div></div>
                 <div>
-                    <button class="btn btn-block btn-outline-primary mb-1" :title="commonStore.accountVerify!=2?'帳號審核通過即可開啟':''" :disabled="commonStore.accountVerify!=2">開啟</button>
+                    <button class="btn btn-block btn-outline-primary mb-1" :title="accountVerify!=2?'帳號審核通過即可開啟':''" :disabled="accountVerify!=2">開啟</button>
                     <button class="btn btn-block btn-outline-danger">刪除</button>
                 </div>
             </div>
@@ -289,8 +293,8 @@ const getSampleImg = (key) => {
         </div>
     </div>
     <div class="mt-15 text-center">
-        <button class="btn btn-primary mx-1" @click="router.push('/home/add-rent')" :title="commonStore.accountVerify!=2?'帳號審核通過即可刊登租盤廣告':''" :disabled="commonStore.accountVerify!=2">刊登租盤廣告</button>
-        <button class="btn btn-primary mx-1" @click="router.push('/home/add-sale')" :title="commonStore.accountVerify!=2?'帳號審核通過即可刊登售盤廣告':''" :disabled="commonStore.accountVerify!=2">刊登售盤廣告</button>
+        <button class="btn btn-primary mx-1" @click="router.push('/home/add-rent')" :title="accountVerify!=2?'帳號審核通過即可刊登租盤廣告':''" :disabled="accountVerify!=2">刊登租盤廣告</button>
+        <button class="btn btn-primary mx-1" @click="router.push('/home/add-sale')" :title="accountVerify!=2?'帳號審核通過即可刊登售盤廣告':''" :disabled="accountVerify!=2">刊登售盤廣告</button>
     </div>
   </div>
 </template>
@@ -494,7 +498,6 @@ const getSampleImg = (key) => {
     .house-list-div{
         margin-top: 20px;
         .house-item{
-            margin-bottom: 15px;
             width: 100%;
             background: #fff;
             border-radius: 3px;

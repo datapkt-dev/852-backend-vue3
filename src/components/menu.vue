@@ -3,9 +3,10 @@ import { ref, watch } from 'vue'
 import {useRouter,useRoute } from 'vue-router';
 import { googleLogout } from "vue3-google-login"
 
+import { storeToRefs  } from 'pinia';
 import { useCommonStore } from '@/store/commonStore'
-
 const commonStore = useCommonStore()
+const { accountVerify } = storeToRefs(commonStore);
 
 
 import { useI18n } from 'vue-i18n'
@@ -105,7 +106,7 @@ const menuList = ref([
   {
     type: 'category',
     name: t('Menu.member-center'),
-    isAccountVerify: true,
+    isActive: false,
     isAccountVerify: 0
   },
   {
@@ -193,7 +194,7 @@ watch(() =>  isShowMobile.value, (val) => {
     </div>
     <div class="menu-list-div" :style="isOpenAccountBox?'padding: 0 0 130px 0;':'padding: 0 0 60px 0;'">
       <template v-for="(menuItem, menuIndex) in menuList">
-        <div v-if="menuItem.type=='link' && (commonStore.accountVerify>=menuItem.isAccountVerify)" class="menu-item" :class="(menuItem.isActive || route.path==menuItem.path)?'active':''">
+        <div v-if="menuItem.type=='link' && (accountVerify>=menuItem.isAccountVerify)" class="menu-item" :class="(menuItem.isActive || route.path==menuItem.path)?'active':''">
           <div @click="isShowMobile=false;router.push(menuItem.path);">
             <div>
               <span class="material-icons-outlined">
@@ -205,8 +206,8 @@ watch(() =>  isShowMobile.value, (val) => {
             </div>
           </div>
         </div>
-        <div v-if="menuItem.type=='line' && (commonStore.accountVerify>=menuItem.isAccountVerify)" class="line my-1" :key="menuIndex+'line'"></div>
-        <div v-if="menuItem.type=='category' && (commonStore.accountVerify>=menuItem.isAccountVerify)" class="menu-category-title" :key="menuIndex+'category'">
+        <div v-if="menuItem.type=='line' && (accountVerify>=menuItem.isAccountVerify)" class="line my-1" :key="menuIndex+'line'"></div>
+        <div v-if="menuItem.type=='category' && (accountVerify>=menuItem.isAccountVerify)" class="menu-category-title" :key="menuIndex+'category'">
           {{menuItem.name}}
         </div>
       </template>
@@ -216,7 +217,7 @@ watch(() =>  isShowMobile.value, (val) => {
         <div>
           <img src="@/assets/images/user.webp" alt="">
         </div>
-        <div v-if="!isFullMenu()">
+        <div v-if="!isFullMenu() && googleUserData">
           <div class="user-name">{{ googleUserData.name }}</div>
           <div class="user-surname"> {{  googleUserData.email }}</div>
         </div>
