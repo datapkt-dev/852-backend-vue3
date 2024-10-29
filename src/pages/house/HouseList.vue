@@ -121,7 +121,7 @@ const getSampleImg = (key) => {
                 <div>
                     <div>
                         <input type="text">
-                        <button class="btn btn-info">物件搜尋</button>
+                        <button class="btn btn-primary">物件搜尋</button>
                     </div>
                 </div>
             </div>
@@ -171,13 +171,13 @@ const getSampleImg = (key) => {
                         <div>Carry Kwok</div>
                     </div>
                     <div class="options-div">
-                        <button class="btn btn-info btn-sm">更改資料</button>
-                        <button class="btn btn-info">設為封盤</button>
-                        <button class="btn btn-info">設為隱藏</button>
-                        <button class="btn btn-info">設為已租</button>
-                        <button class="btn btn-info">推盤(可推 0 次)</button>
-                        <button class="btn btn-info">續期</button>
-                        <button class="btn btn-info">複製樓盤</button>
+                        <button class="btn btn-primary btn-sm">更改資料</button>
+                        <button class="btn btn-primary">設為封盤</button>
+                        <button class="btn btn-primary">設為隱藏</button>
+                        <button class="btn btn-primary">設為已租</button>
+                        <button class="btn btn-primary">推盤(可推 0 次)</button>
+                        <button class="btn btn-primary">續期</button>
+                        <button class="btn btn-primary">複製樓盤</button>
                     </div>
                     <div class="sub-content">
                         <div class="title">自行記事本(不會公開)</div>
@@ -303,8 +303,9 @@ const getSampleImg = (key) => {
                 }
                 >.tag-and-price{
                     display: flex;
-                    justify-content: start;
+                    justify-content: space-between;
                     margin-bottom: 10px;
+                    gap: 10px;
                     .tag-list{
                         display: flex;
                         flex-wrap: wrap;
@@ -321,7 +322,7 @@ const getSampleImg = (key) => {
                     .price{
                         >div{
                             padding: 5px 10px;
-                            background: var(--bs-info);
+                            background: var(--bs-primary);
                             border-radius: 3px;
                             font-size: 14px;
                             font-weight: 500;
@@ -335,7 +336,7 @@ const getSampleImg = (key) => {
                     border-radius: 3px;
                     box-shadow: 0 0 5px rgba(0,0,0,.5);
                     padding: 10px;
-                    border-top: 2px solid var(--bs-info);
+                    border-top: 2px solid var(--bs-primary);
                     >.title{
                         font-size: 16px;
                         font-weight: 700;
@@ -375,12 +376,12 @@ const getSampleImg = (key) => {
                     }
                     >.options-div{
                         display: flex;
-                        justify-content: start;
+                        flex-wrap: wrap;
                         gap: 10px;
                         margin-bottom: 10px;
                         >button{
                             padding: 5px 10px;
-                            background: var(--bs-info);
+                            background: var(--bs-primary);
                             border-radius: 3px;
                             border: 0;
                             font-size: 14px;
@@ -445,6 +446,20 @@ const getSampleImg = (key) => {
             }
         }
         
+        
+
+    .house-list-div{
+        padding: 8px 16px;
+        >.house-item{
+            display: block;
+            >div:nth-child(1){
+                width: 100%;
+            }
+            >div:nth-child(2){
+                width: 100%;
+            }
+        }
+    }
     }
 
 </style>

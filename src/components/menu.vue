@@ -51,9 +51,17 @@ const menuList = ref([
   },
   {
     type: 'link',
-    name:  '物件管理',
+    name:  '我的樓盤',
     icon: 'home',
-    path: '/home',
+    path: '/house-list',
+    isActive: false,
+    isAccountVerify: 1
+  },
+  {
+    type: 'link',
+    name:  '刊登樓盤',
+    icon: 'add',
+    path: '/edit-house',
     isActive: false,
     isAccountVerify: 1
   },

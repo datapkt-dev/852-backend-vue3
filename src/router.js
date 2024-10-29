@@ -5,12 +5,14 @@ import Login from '@/pages/login/login.vue'
 
 import Page404 from '@/pages/error/page404.vue'
 
-import Home from '@/pages/home/home.vue'
-import HouseList from '@/pages/home/HouseList.vue'
-import HouseAddandEdit from '@/pages/home/houseAddandEdit.vue'
-import PublicationPlan from '@/pages/home/publicationPlan.vue'
-import PayTheFee from '@/pages/home/payTheFee.vue'
-import PublicationSuccess from '@/pages/home/publicationSuccess.vue'
+// import Home from '@/pages/home/home.vue'
+// import HouseAddandEdit from '@/pages/home/houseAddandEdit.vue'
+// import PublicationPlan from '@/pages/home/publicationPlan.vue'
+// import PayTheFee from '@/pages/home/payTheFee.vue'
+// import PublicationSuccess from '@/pages/home/publicationSuccess.vue'
+
+import HouseList from '@/pages/house/HouseList.vue'
+import EditHouse from '@/pages/house/EditHouse.vue'
 
 import ContractList from '@/pages/contract/contract-list.vue'
 import TenantList from '@/pages/tenant/tenant-list.vue'
@@ -23,7 +25,7 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    redirect: '/home'
+    redirect: '/house-list'
   },
   {
     path: '/login',
@@ -34,45 +36,53 @@ const routes = [
     }
   },
   {
-    path: '/home',
-    name: 'HomePage',
+    path: '/house-list',
+    name: 'HouseList',
     component: HouseList,
     meta: { 
-      title: '主頁'
+      title: '我的樓盤'
     } 
   },
   {
-    path: '/home/:pageType',
-    name: 'HouseAdd',
-    component: HouseAddandEdit,
+    path: '/edit-house',
+    name: 'EditHouse',
+    component: EditHouse,
     meta: { 
-      title: '新增房屋資訊'
-    }
+      title: '刊登樓盤'
+    } 
   },
-  {
-    path: '/home/:pageType/publication-plan',
-    name: 'PublicationPlan',
-    component: PublicationPlan,
-    meta: { 
-      title: '刊登方案 '
-    }
-  },
-  {
-    path: '/home/:pageType/pay-the-fee',
-    name: 'PayTheFee',
-    component: PayTheFee,
-    meta: { 
-      title: '繳費'
-    }
-  },
-  {
-    path: '/home/:pageType/success',
-    name: 'PublicationSuccess',
-    component: PublicationSuccess,
-    meta: { 
-      title: '刊登成功'
-    }
-  },
+  // {
+  //   path: '/home/:pageType',
+  //   name: 'HouseAdd',
+  //   component: HouseAddandEdit,
+  //   meta: { 
+  //     title: '新增房屋資訊'
+  //   }
+  // },
+  // {
+  //   path: '/home/:pageType/publication-plan',
+  //   name: 'PublicationPlan',
+  //   component: PublicationPlan,
+  //   meta: { 
+  //     title: '刊登方案 '
+  //   }
+  // },
+  // {
+  //   path: '/home/:pageType/pay-the-fee',
+  //   name: 'PayTheFee',
+  //   component: PayTheFee,
+  //   meta: { 
+  //     title: '繳費'
+  //   }
+  // },
+  // {
+  //   path: '/home/:pageType/success',
+  //   name: 'PublicationSuccess',
+  //   component: PublicationSuccess,
+  //   meta: { 
+  //     title: '刊登成功'
+  //   }
+  // },
 
   
 
