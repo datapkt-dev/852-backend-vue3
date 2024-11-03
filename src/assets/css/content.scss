@@ -512,11 +512,13 @@ hr{
 .input-group{
     position: relative;
     display: flex;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
+    white-space: nowrap;
     >*{
         margin: 0 5px;
     }
+
 }
 
 .text-input{
@@ -669,8 +671,9 @@ hr{
 .input-group-inline{
     position: relative;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: start;
+    align-items: start;
+    gap: 10px;
     >input[type="number"]{
         width: 100px;
         text-align: center;
@@ -732,6 +735,28 @@ hr{
     }
 }
 
+.flex-div{
+    display: flex;
+    justify-content: start;
+    gap: 15px;
+    >*{
+        flex: 1;
+    }
+    // justify-content: center;
+    // align-items: center;
+    // flex-wrap: wrap;
+}
+
+.flex-wrap{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    >*{
+        flex: 1;
+    }
+}
 
 @media (max-width: 1400px) {
     .card-list{
