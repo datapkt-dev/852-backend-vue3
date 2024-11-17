@@ -6,7 +6,7 @@ import Login from '@/pages/login/login.vue'
 import Page404 from '@/pages/error/page404.vue'
 
 // import Home from '@/pages/home/home.vue'
-// import HouseAddandEdit from '@/pages/home/houseAddandEdit.vue'
+import HouseAddandEdit from '@/pages/home/houseAddandEdit.vue'
 // import PublicationPlan from '@/pages/home/publicationPlan.vue'
 // import PayTheFee from '@/pages/home/payTheFee.vue'
 // import PublicationSuccess from '@/pages/home/publicationSuccess.vue'
@@ -88,14 +88,14 @@ const routes = [
 
 
 
-  // {
-  //   path: '/home/:pageType/:houseId',
-  //   name: 'HouseEdit',
-  //   component: HouseAddandEdit,
-  //   meta: { 
-  //     title: '編輯房屋資訊'
-  //   }
-  // },
+  {
+    path: '/test/:pageType/:houseId',
+    name: 'HouseTestEdit',
+    component: HouseAddandEdit,
+    meta: { 
+      title: '編輯房屋資訊'
+    }
+  },
 
   {
     path: '/contract-list',
