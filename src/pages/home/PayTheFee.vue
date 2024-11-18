@@ -92,7 +92,7 @@ const pageType = computed(() => {
     </div>
     <div class="box flex-space">
         <button class="btn btn-outline-primary" @click="router.go(-1)">Back</button>
-        <button class="btn btn-primary" @click="router.push('/home/add-rent/success')">立即付款</button>
+        <button class="btn btn-primary" @click="router.push('/test/add-rent/success')">立即付款</button>
     </div>
   </div>
 </template>

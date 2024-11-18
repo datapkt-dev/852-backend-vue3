@@ -179,8 +179,8 @@ const isplane = ref(true);
     </div>
     <div class="box flex-space">
         <button class="btn btn-outline-primary" @click="router.go(-1)">Back</button>
-        <button v-if="isplane" class="btn btn-primary" @click="router.push('/home/add-rent/pay-the-fee')">下一步</button>
-        <button v-if="!isplane" class="btn btn-primary" @click="router.push('/home/add-rent/success?isplane=false')">下一步</button>
+        <button v-if="isplane" class="btn btn-primary" @click="router.push('/test/add-rent/pay-the-fee')">下一步</button>
+        <button v-if="!isplane" class="btn btn-primary" @click="router.push('/test/add-rent/success?isplane=false')">下一步</button>
     </div>
   </div>
 </template>

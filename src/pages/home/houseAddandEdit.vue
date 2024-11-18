@@ -481,7 +481,7 @@ const delContactPerson = (index) => {
         </div>
     </div>
     <div class="box text-right">
-        <button class="btn btn-primary" @click="router.push('/home/add-rent/publication-plan')">下一步</button>
+        <button class="btn btn-primary" @click="router.push('/test/add-rent/publication-plan')">下一步</button>
     </div>
   </div>
 </template>
