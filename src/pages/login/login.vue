@@ -24,8 +24,9 @@ const loginByToken = () => {
 const callback = (response) => {
   // This callback will be triggered when the user selects or login to
   // his Google account from the popup
+  console.log("google callback:", response);
   const userData = decodeCredential(response.credential)
-  console.log("Handle the userData", userData)
+  console.log("decodeCredential UserData", userData)
 
   localStorage.setItem('user', JSON.stringify(userData))
   // console.log("Handle the response", response)
